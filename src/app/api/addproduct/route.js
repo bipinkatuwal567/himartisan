@@ -2,18 +2,17 @@ import { NextResponse } from "next/server";
 import prisma from "../../../db/dbconfig";
 export async function addProduct(request) {
   try {
-    const { name, description, price, category } = await request.json();
+    const { name, description, price, category, stock, offerPrice } = await request.json();
     console.log(name, description, price, category);
     const product = await prisma.product.create({
       data: {
         name,
         description,
-        price: 100,
+        price:100,
         category,
-        offerPrice: 100,
-        stock: 1,
-        ImagePath: "hello",
-        isAvailable: true,
+        offerPrice:100,
+        stock:1,
+        ImagePath:"blank for now",
       },
     });
 
