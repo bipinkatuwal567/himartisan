@@ -8,10 +8,10 @@ export async function addProduct(request) {
       data: {
         name,
         description,
-        price,
+        price:100,
         category,
-        offerPrice,
-        stock,
+        offerPrice:100,
+        stock:1,
         ImagePath:"blank for now",
       },
     });
