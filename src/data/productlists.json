@@ -1,0 +1,152 @@
+[
+  {
+    "name": "basket.png",
+    "description": "A handcrafted wicker basket, perfect for storage or decoration.",
+    "price": 10,
+    "category": "Home Decor"
+  },
+  {
+    "name": "coffee_table-removebg-preview.png",
+    "description": "A stylish coffee table made from high-quality wood, ideal for any living room.",
+    "price": 10,
+    "category": "Furniture"
+  },
+  {
+    "name": "daalo.png",
+    "description": "Traditional woven basket used for carrying goods, reflecting cultural craftsmanship.",
+    "price": 10,
+    "category": "Home Decor"
+  },
+  {
+    "name": "damaha-removebg-preview.png",
+    "description": "A traditional drum known as Damaha, used in various cultural ceremonies and festivities.",
+    "price": 10,
+    "category": "Musical Instruments"
+  },
+  {
+    "name": "damaru-removebg-preview.png",
+    "description": "A small two-headed drum, Damaru, often used in spiritual practices and rituals.",
+    "price": 10,
+    "category": "Musical Instruments"
+  },
+  {
+    "name": "bhadgaule topi.png",
+    "description": "The traditional Nepali cap known as Bhadgaule Topi, representing Nepali heritage.",
+    "price": 10,
+    "category": "Apparel"
+  },
+  {
+    "name": "dhimay-removebg-preview.png",
+    "description": "A traditional Nepali drum, Dhimay, played during cultural festivals and processions.",
+    "price": 10,
+    "category": "Musical Instruments"
+  },
+  {
+    "name": "flute-removebg-preview.png",
+    "description": "A handcrafted wooden flute, producing melodious tunes for music lovers.",
+    "price": 10,
+    "category": "Musical Instruments"
+  },
+  {
+    "name": "Piccolo_Bandurria_Rondalla-removebg-preview.png",
+    "description": "A Piccolo Bandurria, a small string instrument, often used in folk music.",
+    "price": 10,
+    "category": "Musical Instruments"
+  },
+  {
+    "name": "rustic_floor_cushion2-removebg-preview.png",
+    "description": "A rustic floor cushion, adding comfort and style to your living space.",
+    "price": 10,
+    "category": "Home Decor"
+  },
+  {
+    "name": "sabina_table.png",
+    "description": "A beautifully crafted Sabina table, perfect for any room in your home.",
+    "price": 10,
+    "category": "Furniture"
+  },
+  {
+    "name": "sarangi-removebg-preview.png",
+    "description": "A traditional Nepali string instrument, Sarangi, known for its soulful music.",
+    "price": 10,
+    "category": "Musical Instruments"
+  },
+  {
+    "name": "tabala-removebg-preview.png",
+    "description": "A pair of Tabla drums, essential for classical Indian music performances.",
+    "price": 10,
+    "category": "Musical Instruments"
+  },
+  {
+    "name": "tungna-removebg-preview.png",
+    "description": "A traditional Nepali string instrument, Tungna, popular in folk music.",
+    "price": 10,
+    "category": "Musical Instruments"
+  },
+  {
+    "name": "aastamangal.png",
+    "description": "A traditional symbol set representing eight auspicious symbols in Nepali culture.",
+    "price": 25,
+    "category": "Household Items"
+  },
+  {
+    "name": "axe.png",
+    "description": "A tool with a heavy bladed head mounted across a handle, used for chopping or splitting wood.",
+    "price": 15,
+    "category": "Weapons"
+  },
+  {
+    "name": "bow.png",
+    "description": "A weapon for shooting arrows, typically made of a curved piece of wood whose ends are joined by a taut string.",
+    "price": 20,
+    "category": "Weapons"
+  },
+  {
+    "name": "brass lota.png",
+    "description": "A traditional brass water container used in various rituals and daily use in Nepali households.",
+    "price": 12,
+    "category": "Household Items"
+  },
+  {
+    "name": "brasshandi.jpg",
+    "description": "A traditional Nepali brass pot used for cooking and storing water.",
+    "price": 18,
+    "category": "Household Items"
+  },
+  {
+    "name": "kaans_plate.png",
+    "description": "A traditional plate made from bell metal, used in Nepali households for serving food.",
+    "price": 10,
+    "category": "Household Items"
+  },
+  {
+    "name": "karuwa.png",
+    "description": "A traditional Nepali water jug, often made of brass, used for serving water.",
+    "price": 22,
+    "category": "Household Items"
+  },
+  {
+    "name": "khukuri.png",
+    "description": "A traditional Nepali curved knife, famously used by the Gurkhas.",
+    "price": 35,
+    "category": "Weapons"
+  },
+  {
+    "name": "kora talwar.png",
+    "description": "A traditional Nepali sword with a distinct curve, used historically in battles.",
+    "price": 40,
+    "category": "Weapons"
+  },
+  {
+    "name": "sickle.png",
+    "description": "A hand-held agricultural tool with a curved blade, used for harvesting crops.",
+    "price": 8,
+    "category": "Weapons"
+  },
+  {
+    "name": "trishul.png",
+    "description": "A trident, often associated with Hindu deity Shiva, symbolizing power and protection.",
+    "price": 30,
+    "category": "Household Items"
+  }
+]
