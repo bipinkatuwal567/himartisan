@@ -3,6 +3,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "./ui/card";
@@ -18,7 +19,7 @@ function ProductCard({ name, description, price }) {
         />
       </CardHeader>
       <CardContent className="w-full flex-1 p-2 flex flex-col gap-y-2">
-        <CardTitle className="font-semibold text-lg truncate">{name}</CardTitle>
+        <CardTitle className="font-semibold text-xl truncate">{name}</CardTitle>
         <CardDescription className="text-sm truncate">
           {description}
         </CardDescription>

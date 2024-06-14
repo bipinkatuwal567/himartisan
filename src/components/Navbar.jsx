@@ -10,8 +10,8 @@ const Navbar = () => {
 
   console.log(openMenu);
   return (
-    <nav className="flex relative w-full justify-between flex-col sm:flex-row items-center py-4">
-      <div className="flex justify-between w-full sticky top-0 h-[4.5rem] bg-white items-center px-4 py-2 rounded-xl shadow-md grainy">
+    <nav className="flex w-full justify-between flex-col sm:flex-row items-center py-2 sticky top-0 z-50">
+      <div className="flex backdrop-blur-sm bg-white/30 justify-between w-full sticky top-0 h-[4.5rem] items-center px-4 py-2 rounded-xl shadow-md grainy">
         <Link href={"/"} className="font-bold text-xl uppercase">
           Himartisan
         </Link>
