@@ -17,10 +17,10 @@ const ProductPage = () => {
           if (product.isTrending) {
             return (
               <ProductCard
-              key={product.name}
+              key={product.title}
                 title={product.title}
                 imgName={product.imgName}
-                name={product.name}
+                name={product.title}
                 description={product.description}
                 price={product.price}
               />
