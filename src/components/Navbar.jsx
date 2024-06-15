@@ -102,13 +102,13 @@ const Navbar = () => {
             Cart
           </Link>
 
-          <RegisterLink postLoginRedirectURL="/user">
+          <RegisterLink postLoginRedirectURL="http://localhost:3000/user">
             <Button variant={"outline"} className="font-semibold">
               Sign up
             </Button>
           </RegisterLink>
 
-          <LoginLink postLoginRedirectURL="/user">
+          <LoginLink postLoginRedirectURL="http://localhost:3000">
             <Button>Sign in</Button>
           </LoginLink>
         </div>
