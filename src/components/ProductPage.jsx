@@ -12,11 +12,12 @@ const ProductPage = () => {
       <h2 className=" justify-self-start mb-5 font-semibold text-xl">
         Trending Products
       </h2>
-      <div className="w-full flex flex-wrap gap-8 sm:gap-5 sm:justify-between justify-center sm:gap-y-8">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 sm:gap-5 sm:justify-between justify-center sm:gap-y-8">
         {products.map((product) => {
           if (product.isTrending) {
             return (
               <ProductCard
+              key={product.name}
                 title={product.title}
                 imgName={product.imgName}
                 name={product.name}

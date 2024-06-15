@@ -32,7 +32,7 @@ const Navbar = () => {
         <div className="sm:flex md:gap-6 sm:gap-2 items-center hidden font-semibold">
           <Link
             className=" hover:bg-gray-200/70 px-3 py-2 rounded-md"
-            href={"/"}
+            href={"/products"}
           >
             Home
           </Link>

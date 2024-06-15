@@ -8,10 +8,10 @@ import {
 } from "./ui/card";
 import Link from "next/link";
 
-function ProductCard({ title, description, price, imgName }) {
+function ProductCard({ name, description, price, imgName }) {
   return (
-    <Card className="w-full h-96 sm:w-72 sm:h-72 bg-transparent flex flex-col">
-      <CardHeader className="w-full relative h-2/3 bg-[rgba(0,0,0,0.06)] flex justify-center items-center overflow-hidden">
+    <Card className="w-full h-96 sm:w-auto sm:h-72 bg-transparent flex flex-col">
+      <CardHeader className="className='w-full relative h-2/3 bg-[rgba(0,0,0,0.06)] flex justify-center items-center overflow-hidden'">
         <img
           src={`/images/${imgName}`}
           alt="basket"
