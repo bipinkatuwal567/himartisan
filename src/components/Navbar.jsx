@@ -5,6 +5,10 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaXmark } from "react-icons/fa6";
 import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
+import {
+  RegisterLink,
+  LoginLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
 
 const Navbar = () => {
   const pathName = usePathname();
@@ -56,14 +60,15 @@ const Navbar = () => {
             Cart(2)
           </Link>
           <div className="flex gap-3">
-            <Link href={"/"}>
+            <RegisterLink postLoginRedirectURL="/user">
               <Button variant={"outline"} className="font-semibold">
                 Sign up
               </Button>
-            </Link>
-            <Link href={"/"}>
+            </RegisterLink>
+
+            <LoginLink postLoginRedirectURL="/user">
               <Button>Sign in</Button>
-            </Link>
+            </LoginLink>
           </div>
         </div>
       </div>
@@ -92,17 +97,20 @@ const Navbar = () => {
             className={`hover:bg-gray-200/70 px-3 py-2 rounded-md ${
               pathName === "/cart" ? "text-[#FF5315]" : null
             }`}
-            onClick={() => setOpenMenu(false)}          >
+            onClick={() => setOpenMenu(false)}
+          >
             Cart
           </Link>
-          <Link href={"/"}>
+
+          <RegisterLink postLoginRedirectURL="/user">
             <Button variant={"outline"} className="font-semibold">
               Sign up
             </Button>
-          </Link>
-          <Link href={"/"}>
+          </RegisterLink>
+
+          <LoginLink postLoginRedirectURL="/user">
             <Button>Sign in</Button>
-          </Link>
+          </LoginLink>
         </div>
       ) : null}
     </nav>
