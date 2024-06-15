@@ -3,7 +3,7 @@ import BuyerForm from '../../components/BuyerForm'
 
 const page = () => {
   return (
-    <div>
+    <div className='w-full grainy'>
         <BuyerForm />
     </div>
   )
