@@ -3,8 +3,6 @@ import CategoryCard from "./CategoryCard";
 import CategoryProduct from "./CategoryProduct";
 import categories from '../data/category.json'
 const CategoriesPage = () => {
-      console.log(categories)
-
   return (
     <div className="mx-auto mt-8 flex flex-col gap-5">
         <h2 className="text-lg font-semibold">Shop by Categories</h2>

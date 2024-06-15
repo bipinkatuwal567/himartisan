@@ -8,7 +8,6 @@ import { Button } from "./ui/button";
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
-  console.log(openMenu);
   return (
     <nav className="flex w-full justify-between flex-col sm:flex-row items-center py-2 sticky top-0 z-50">
       <div className="flex backdrop-blur-sm bg-white/30 justify-between w-full sticky top-0 h-[4.5rem] items-center px-4 py-2 rounded-xl shadow-md grainy">
@@ -32,13 +31,13 @@ const Navbar = () => {
         <div className="sm:flex md:gap-6 sm:gap-2 items-center hidden font-semibold">
           <Link
             className=" hover:bg-gray-200/70 px-3 py-2 rounded-md"
-            href={"/products"}
+            href={"/"}
           >
             Home
           </Link>
           <Link
             className=" hover:bg-gray-200/70 px-3 py-2 rounded-md"
-            href={"/"}
+            href={"/products?category=all"}
           >
             Product
           </Link>

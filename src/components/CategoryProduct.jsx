@@ -11,12 +11,11 @@ function CategoryProduct({ image, id, title }) {
           className="h-full w-auto hover:scale-105 transition duration-300"
         />
       </div>
-      <div className="flex-grow p-4 flex justify-center items-end">
-        <Link href={`products?category=${title}`} className="w-full">
-          <button className="bg-white py-2 rounded-lg w-full text-sm  hover:bg-[rgba(255,255,255,0.8)]">
-            {title}
-          </button>
-        </Link>
+      <div className='flex-grow p-4 flex justify-center items-end'>
+            <Link href={`products?category=${title}`} className='w-full'>
+                  
+        <button className='bg-white py-2 rounded-lg w-full text-sm  hover:bg-[rgba(255,255,255,0.8)]'>{title}</button>
+            </Link>
       </div>
     </div>
   );
