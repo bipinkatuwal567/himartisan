@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import prisma from "../../../db/dbconfig";
 export async function addProduct(request) {
   try {
-    const { name, description, price, category, stock, offerPrice } = await request.json();
+    const { name, description, price, category, stock, ImagePath } = await request.json();
     console.log(name, description, price, category);
 
     
@@ -10,11 +10,10 @@ export async function addProduct(request) {
       data: {
         name,
         description,
-        price:100,
+        price:parseInt(price),
         category,
-        offerPrice:100,
-        stock:1,
-        ImagePath:"blank for now",
+        stock,
+        ImagePath,
       },
     });
 
@@ -29,6 +28,7 @@ export async function addProduct(request) {
       { status: 400 }
     );
   } catch (error) {
+      console.log(error.message)
     return NextResponse.json(
       { success: false, message: error.message },
       { status: 500 }
