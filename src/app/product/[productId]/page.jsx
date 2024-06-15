@@ -8,7 +8,7 @@ const page = () => {
         <img src="/khukuri.png" className="w-full h-full object-contain" />
       </div>
 
-      <div className="flex flex-col gap-y-3 lg:w-1/2">
+      <div className="mt-10 flex flex-col gap-y-3 lg:w-1/2">
         <div className="flex flex-col gap-y-2">
           <h2 className="font-bold text-2xl">Test Title</h2>
           <p className="text-sm">
