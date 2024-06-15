@@ -8,12 +8,12 @@ import {
   CardTitle,
 } from "./ui/card";
 
-function ProductCard({ name, description, price }) {
+function ProductCard({ name, description, price, imgName }) {
   return (
     <Card className="w-full h-96 sm:w-72 sm:h-72 bg-transparent flex flex-col">
       <CardHeader className="className='w-full relative h-2/3 bg-[rgba(0,0,0,0.06)] flex justify-center items-center overflow-hidden'">
         <img
-          src="/basket.png"
+          src={`/images/${imgName}`}
           alt="basket"
           className="w-11/12 h-auto hover:scale-105 transition duration-300"
         />

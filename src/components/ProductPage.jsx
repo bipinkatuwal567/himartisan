@@ -15,6 +15,7 @@ const ProductPage = () => {
         {products.map((product) => {
           return (
             <ProductCard
+            key={product.name}
               name={product.name}
               description={product.description}
               price={product.price}
