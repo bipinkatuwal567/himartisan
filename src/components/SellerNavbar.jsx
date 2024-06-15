@@ -1,15 +1,19 @@
+"use client";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { AiFillProduct } from "react-icons/ai";
 
 const SellerNavbar = () => {
+  const pathName = usePathname();
+
   return (
     <aside className="bg-gradient-to-br from-orange-500 to-red-500 -translate-x-80 fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0">
       <div className="relative border-b border-white/20">
         <a className="flex items-center gap-4 py-6 px-8" href="#/">
-          <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-white">
-            Himartisan Dashboard
+          <h6 className="block antialiased font-sans text-lg font-semibold -tracking-tighter leading-relaxed text-white uppercase">
+            himartisan
           </h6>
         </a>
         <button
@@ -40,7 +44,11 @@ const SellerNavbar = () => {
           <li>
             <Link aria-current="page" className="active" href="/seller">
               <button
-                className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg bg-gradient-to-tr from-white/70 to-white/70 text-black shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] w-full flex items-center gap-4 px-4 capitalize"
+                className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg w-full flex items-center gap-4 px-4 capitalize ${
+                  pathName === "/seller"
+                    ? "text-red-500 bg-gradient-to-tr from-white/70 to-white/70 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]"
+                    : "text-white"
+                }`}
                 type="button"
               >
                 <svg
@@ -62,8 +70,11 @@ const SellerNavbar = () => {
           <li>
             <Link className="active" href="/seller/profile">
               <button
-                className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
-                type="button"
+                className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg w-full flex items-center gap-4 px-4 capitalize ${
+                  pathName === "/seller/profile"
+                    ? "bg-gradient-to-tr from-white/70 to-white/70 text-red-500 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]"
+                    : "text-white"
+                }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -86,10 +97,13 @@ const SellerNavbar = () => {
           </li>
 
           <li>
-            <Link className="active" href="/seller/addProduct">
+            <Link className="" href="/seller/addProduct">
               <button
-                className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
-                type="button"
+                className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg w-full flex items-center gap-4 px-4 capitalize ${
+                  pathName === "/seller/addProduct"
+                    ? "bg-gradient-to-tr from-white/70 to-white/70 text-red-500  shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]"
+                    : "text-white"
+                }`}
               >
                 <AiFillProduct className="w-5 h-5 text-inherit" />
 
