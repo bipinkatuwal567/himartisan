@@ -64,10 +64,10 @@
     "isTrending": false
   },
   {
-    "title": "Piccolo Bandurria",
-    "imgName": "Piccolo_Bandurria_Rondalla-removebg-preview.png",
-    "description": "A Piccolo Bandurria, a small string instrument, often used in folk music.",
-    "price": 10,
+    "title": "Madal",
+    "imgName": "madal.png",
+    "description": "A Madal, a traditional Nepali drum, often used in folk and classical music.",
+    "price": 25,
     "category": "Musical Instruments",
     "isTrending": true
   },
