@@ -1,5 +1,4 @@
 import React from "react";
-import CategoryCard from "./CategoryCard";
 import CategoryProduct from "./CategoryProduct";
 import categories from "../data/category.json";
 const CategoriesPage = () => {
@@ -10,6 +9,7 @@ const CategoriesPage = () => {
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 sm:gap-5 sm:justify-between justify-center sm:gap-y-8">
         {categories.map((category) => (
           <CategoryProduct
+            imgName={category.imgName}
             key={category.title}
             title={category.title}
             id=""

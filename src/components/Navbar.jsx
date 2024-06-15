@@ -43,7 +43,7 @@ const Navbar = () => {
             className={`hover:bg-gray-200/70 px-3 py-2 rounded-md ${
               pathName === "/products" ? "text-[#FF5315]" : null
             }`}
-            href={"/products"}
+            href={"/products?category=All"}
           >
             Product
           </Link>
@@ -79,7 +79,7 @@ const Navbar = () => {
             Home
           </Link>
           <Link
-            href={"/products"}
+            href={"/products?category=All"}
             className={`hover:bg-gray-200/70 px-3 py-2 rounded-md ${
               pathName === "/products" ? "text-[#FF5315]" : null
             }`}
@@ -92,8 +92,7 @@ const Navbar = () => {
             className={`hover:bg-gray-200/70 px-3 py-2 rounded-md ${
               pathName === "/cart" ? "text-[#FF5315]" : null
             }`}
-            ate
-          >
+            onClick={() => setOpenMenu(false)}          >
             Cart
           </Link>
           <Link href={"/"}>

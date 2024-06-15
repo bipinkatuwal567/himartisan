@@ -29,7 +29,7 @@ const HomePage = () => {
         />
       </div>
 
-      <div className="flex relative gap-2 flex-col sm:gap-2 md:-mt-4 sm:-mt-7 md:gap-3 justify-center w-full flex-wrap shrink -mt-7 ">
+      <div className="flex relative gap-2 flex-col sm:gap-2 md:-mt-4 sm:-mt-9 md:gap-3 justify-center w-full flex-wrap shrink -mt-7 ">
         <div className="isolate hidden lg:block">
           <div
             aria-hidden="true"
