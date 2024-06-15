@@ -6,23 +6,26 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import Link from "next/link";
 
-function ProductCard({ name, description, price }) {
+function ProductCard({ title, description, price, imgName }) {
   return (
     <Card className="w-full h-96 sm:w-72 sm:h-72 bg-transparent flex flex-col">
-      <CardHeader className="className='w-full relative h-2/3 bg-[rgba(0,0,0,0.06)] flex justify-center items-center overflow-hidden'">
+      <CardHeader className="w-full relative h-2/3 bg-[rgba(0,0,0,0.06)] flex justify-center items-center overflow-hidden">
         <img
-          src="/basket.png"
+          src={`/images/${imgName}`}
           alt="basket"
           className="w-11/12 h-auto hover:scale-105 transition duration-300"
         />
       </CardHeader>
-      <CardContent className="w-full flex-1 p-2 flex flex-col gap-y-2">
-        <CardTitle className="font-semibold text-lg truncate">{name}</CardTitle>
+      <CardContent className="w-full flex-1 p-2 flex flex-col gap-y-2 cursor-pointer">
+        <CardTitle className="font-semibold text-lg truncate">
+          {title}
+        </CardTitle>
         <CardDescription className="text-sm truncate">
-          {description}
+          <Link href={"/product/1"}>{description}</Link>
         </CardDescription>
-        <p>$ {price}.00</p>
+        <p>${price}.00</p>
       </CardContent>
     </Card>
   );

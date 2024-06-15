@@ -8,7 +8,7 @@ const AddToCart = () => {
   const [qty, setQty] = useState(1);
 
   return (
-    <div className="mt-5 flex flex-col w-full ">
+    <div className="mt-5 flex flex-col w-full lg:h-[calc(100vh-18rem)] h-screen">
       <h2 className="text-2xl font-bold border-b border-gray-300 pb-2">Cart</h2>
       <div className="mt-8 flex w-full lg:justify-between items-start lg:items-start gap-10 flex-col lg:flex-row">
         <table className="flex justify-between">
@@ -22,7 +22,7 @@ const AddToCart = () => {
             <tr className="mt-5 grid grid-cols-4 sm:grid-cols-3 w-full place-items-start justify-items-start gap-10">
               <td className="flex items-center gap-3 col-span-2 sm:col-span-1">
                 <Image
-                  src={"/topi.png"}
+                  src={"/khukuri.png"}
                   height={70}
                   width={70}
                   className=" bg-gray-200 rounded-md"

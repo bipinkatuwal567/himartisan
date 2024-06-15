@@ -34,21 +34,21 @@ const Navbar = () => {
             className=" hover:bg-gray-200/70 px-3 py-2 rounded-md"
             href={"/"}
           >
+            Home
+          </Link>
+          <Link
+            className=" hover:bg-gray-200/70 px-3 py-2 rounded-md"
+            href={"/"}
+          >
             Product
           </Link>
           <Link
             className=" hover:bg-gray-200/70 px-3 py-2 rounded-md"
-            href={"/"}
+            href={"/cart"}
           >
-            Pricing
+            Cart(2)
           </Link>
-          <Link
-            className=" hover:bg-gray-200/70 px-3 py-2 rounded-md"
-            href={"/"}
-          >
-            Shop
-          </Link>
-          <div className="flex gap-2">
+          <div className="flex gap-3">
             <Link href={"/"}>
               <Button variant={"outline"} className="font-semibold">
                 Sign up
@@ -65,20 +65,23 @@ const Navbar = () => {
           <Link
             href={"/"}
             className=" hover:bg-gray-200/70 px-3 py-2 rounded-md"
-          >
+            onClick={() => setOpenMenu(false)}
+            >
+            Home
+          </Link>
+          <Link
+            href={"/"}
+            className=" hover:bg-gray-200/70 px-3 py-2 rounded-md"
+            onClick={() => setOpenMenu(false)}
+            >
             Product
           </Link>
           <Link
-            href={"/"}
+            href={"/cart"}
             className=" hover:bg-gray-200/70 px-3 py-2 rounded-md"
+            onClick={() => setOpenMenu(false)}
           >
-            Pricing
-          </Link>
-          <Link
-            href={"/"}
-            className=" hover:bg-gray-200/70 px-3 py-2 rounded-md"
-          >
-            Shop
+            Cart
           </Link>
           <Link href={"/"}>
             <Button variant={"outline"} className="font-semibold">

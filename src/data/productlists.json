@@ -45,7 +45,7 @@
     "description": "The traditional Nepali cap known as Bhadgaule Topi, representing Nepali heritage.",
     "price": 10,
     "category": "Apparel",
-    "isTrending": true
+    "isTrending": false
   },
   {
     "title": "Dhimay Drum",
@@ -53,7 +53,7 @@
     "description": "A traditional Nepali drum, Dhimay, played during cultural festivals and processions.",
     "price": 10,
     "category": "Musical Instruments",
-    "isTrending": false
+    "isTrending": true
   },
   {
     "title": "Wooden Flute",
@@ -69,7 +69,7 @@
     "description": "A Piccolo Bandurria, a small string instrument, often used in folk music.",
     "price": 10,
     "category": "Musical Instruments",
-    "isTrending": true
+    "isTrending": false
   },
   {
     "title": "Rustic Floor Cushion",
@@ -117,7 +117,7 @@
     "description": "A traditional symbol set representing eight auspicious symbols in Nepali culture.",
     "price": 25,
     "category": "Household Items",
-    "isTrending": false
+    "isTrending": true
   },
   {
     "title": "Axe",
@@ -157,7 +157,7 @@
     "description": "A traditional plate made from bell metal, used in Nepali households for serving food.",
     "price": 10,
     "category": "Household Items",
-    "isTrending": false
+    "isTrending": true
   },
   {
     "title": "Karuwa Water Jug",
@@ -165,7 +165,7 @@
     "description": "A traditional Nepali water jug, often made of brass, used for serving water.",
     "price": 22,
     "category": "Household Items",
-    "isTrending": false
+    "isTrending": true
   },
   {
     "title": "Khukuri",
