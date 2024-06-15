@@ -8,11 +8,18 @@ import { usePathname } from "next/navigation";
 import {
   RegisterLink,
   LoginLink,
+  LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import AvatarComponent from "./AvatarComponent";
+import { LuLogOut } from "react-icons/lu";
 
 const Navbar = () => {
   const pathName = usePathname();
   const [openMenu, setOpenMenu] = useState(false);
+
+  const { getUser } = useKindeBrowserClient();
+  const user = getUser();
 
   return (
     <nav className="flex w-full justify-between flex-col sm:flex-row items-center py-2 sticky top-0 z-50 bg-transparent">
@@ -59,17 +66,21 @@ const Navbar = () => {
           >
             Cart(2)
           </Link>
-          <div className="flex gap-3">
-            <RegisterLink postLoginRedirectURL="http://localhost:3000/user">
-              <Button variant={"outline"} className="font-semibold">
-                Sign up
-              </Button>
-            </RegisterLink>
+          {user ? (
+            <AvatarComponent img={user.picture} altName={user.given_name} email={user.email} />
+          ) : (
+            <div className="flex gap-3">
+              <RegisterLink postLoginRedirectURL="http://localhost:3000/user">
+                <Button variant={"outline"} className="font-semibold">
+                  Sign up
+                </Button>
+              </RegisterLink>
 
-            <LoginLink postLoginRedirectURL="http://localhost:3000">
-              <Button>Sign in</Button>
-            </LoginLink>
-          </div>
+              <LoginLink postLoginRedirectURL="http://localhost:3000">
+                <Button>Sign in</Button>
+              </LoginLink>
+            </div>
+          )}
         </div>
       </div>
       {openMenu ? (
@@ -101,16 +112,23 @@ const Navbar = () => {
           >
             Cart
           </Link>
+          {user ? (
+            <LogoutLink>
+              <Button> <LuLogOut className="mr-2 w-4 h-4" />  Logout</Button>
+            </LogoutLink>
+          ) : (
+            <div className="flex gap-3">
+              <RegisterLink postLoginRedirectURL="http://localhost:3000/user">
+                <Button variant={"outline"} className="font-semibold">
+                  Sign up
+                </Button>
+              </RegisterLink>
 
-          <RegisterLink postLoginRedirectURL="/user">
-            <Button variant={"outline"} className="font-semibold">
-              Sign up
-            </Button>
-          </RegisterLink>
-
-          <LoginLink postLoginRedirectURL="/user">
-            <Button>Sign in</Button>
-          </LoginLink>
+              <LoginLink postLoginRedirectURL="http://localhost:3000">
+                <Button>Sign in</Button>
+              </LoginLink>
+            </div>
+          )}
         </div>
       ) : null}
     </nav>

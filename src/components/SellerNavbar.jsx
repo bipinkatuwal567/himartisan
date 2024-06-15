@@ -1,4 +1,7 @@
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
+import Link from "next/link";
 import React from "react";
+import { AiFillProduct } from "react-icons/ai";
 
 const SellerNavbar = () => {
   return (
@@ -35,9 +38,9 @@ const SellerNavbar = () => {
       <div className="m-4">
         <ul className="mb-4 flex flex-col gap-1">
           <li>
-            <a aria-current="page" className="active" href="#">
+            <Link aria-current="page" className="active" href="/seller">
               <button
-                className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg bg-gradient-to-tr from-black/70 to-black/70 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] w-full flex items-center gap-4 px-4 capitalize"
+                className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg bg-gradient-to-tr from-white/70 to-white/70 text-black shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] w-full flex items-center gap-4 px-4 capitalize"
                 type="button"
               >
                 <svg
@@ -54,10 +57,10 @@ const SellerNavbar = () => {
                   dashboard
                 </p>
               </button>
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="" href="#">
+            <Link className="active" href="/seller/profile">
               <button
                 className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
                 type="button"
@@ -79,110 +82,48 @@ const SellerNavbar = () => {
                   profile
                 </p>
               </button>
-            </a>
+            </Link>
           </li>
+
           <li>
-            <a className="" href="#">
+            <Link className="active" href="/seller/addProduct">
               <button
                 className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
                 type="button"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  className="w-5 h-5 text-inherit"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
+                <AiFillProduct className="w-5 h-5 text-inherit" />
+
                 <p className="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">
-                  tables
+                  Add Product
                 </p>
               </button>
-            </a>
-          </li>
-          <li>
-            <a className="" href="#">
-              <button
-                className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
-                type="button"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  className="w-5 h-5 text-inherit"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <p className="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">
-                  notifactions
-                </p>
-              </button>
-            </a>
+            </Link>
           </li>
         </ul>
-        <ul className="mb-4 flex flex-col gap-1">
-          <li className="mx-3.5 mt-4 mb-2">
-            <p className="block antialiased font-sans text-sm leading-normal text-white font-black uppercase opacity-75">
-              auth pages
-            </p>
-          </li>
+
+        <ul className="mb-4 flex flex-col gap-1 absolute w-[80%] mx-auto bottom-0 left-[10%]">
           <li>
-            <a className="" href="#">
-              <button
-                className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
-                type="button"
+            <button
+              className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+              type="button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                className="w-5 h-5 text-inherit"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  className="w-5 h-5 text-inherit"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <p className="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">
-                  sign in
-                </p>
-              </button>
-            </a>
-          </li>
-          <li>
-            <a className="" href="#">
-              <button
-                className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
-                type="button"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  className="w-5 h-5 text-inherit"
-                >
-                  <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"></path>
-                </svg>
-                <p className="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">
-                  sign up
-                </p>
-              </button>
-            </a>
+                <path
+                  fill-rule="evenodd"
+                  d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <p className="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">
+                <LogoutLink>log out</LogoutLink>
+              </p>
+            </button>
           </li>
         </ul>
       </div>
