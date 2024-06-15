@@ -1,8 +1,42 @@
-import React from "react";
+"use client"
+
+import React, { useEffect, useState } from "react";
 import AvatarComponent from "../../components/AvatarComponent";
 import SellerFooter from "../../components/SellerFooter";
+import axios from "axios";
+import {useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs";
 
-const page = () => {
+const Page =  () => {
+      const [data, setData]=useState({
+            sales:0, buyers:0
+      })
+
+
+
+      const {user}=useKindeBrowserClient();
+      const email=user?.email || ""
+      console.log(user?.email)
+      useEffect(()=>{
+            async function getSales(){
+                 try {
+                  await axios.post('/api/getSales', {email})
+                  .then(res=>{
+                        
+                        console.log(res.data)
+                        if(res.data.success){
+                              console.log(res.data.totalSales)
+                              setData({...data,buyers:res.data.buyers.length, sales: res.data.totalSales})
+                        }
+                  })
+                 } catch (error) {
+                        console.log("nothign")
+                 }
+            }
+
+            getSales()
+      },[email])
+
+
   return (
     <div className="p-4 xl:ml-80">
       <nav className="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
@@ -46,7 +80,7 @@ const page = () => {
                 Today's Money
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                $53k
+                {`$${data.sales}.00`}
               </h4>
             </div>
             <div className="border-t border-blue-gray-50 p-4">
@@ -77,7 +111,7 @@ const page = () => {
                 Today's Users
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                2,300
+                {data.buyers}
               </h4>
             </div>
             <div className="border-t border-blue-gray-50 p-4">
@@ -104,7 +138,7 @@ const page = () => {
                 New Clients
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                3,462
+                {data.buyers}
               </h4>
             </div>
             <div className="border-t border-blue-gray-50 p-4">
@@ -149,4 +183,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

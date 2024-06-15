@@ -1,7 +1,30 @@
-import React from "react";
-import { Button } from "../../../components/ui/button";
+"use client"
 
+import React from "react";
+import { Button } from "../../../../components/ui/button";
+import axios from "axios";
+import {useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs";
+import toast from "react-hot-toast";
 const page = () => {
+
+      const {user}=useKindeBrowserClient()
+
+      const email=user?.email || "";
+
+      const handleSubmit=async()=>{
+            console.log("here", email)
+            try {
+
+                  await axios.post('/api/addtocart', {productId: "666dae02d262fd466aea768d",email })
+                  .then(res=>{
+                        if(res.data.success)
+                              toast.success("Added to Cart")
+                  })
+
+            } catch (error) {
+                  console.log(error)
+            }
+      }
   return (
     <div className="mt-8 flex flex-col lg:flex-row gap-y-8 h-[calc(108vh)] lg:h-[calc(100vh-18rem)] gap-x-4">
       <div className="w-full bg-gray-200 rounded-md lg:w-1/2 h-96">
@@ -30,7 +53,7 @@ const page = () => {
           </p>
         </div>
 
-        <Button className="uppercase">Add to cart</Button>
+        <Button className="uppercase" type="button" onClick={handleSubmit}>Add to cart</Button>
       </div>
     </div>
   );

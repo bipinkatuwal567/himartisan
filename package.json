@@ -20,6 +20,7 @@
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "crypto-js": "^4.2.0",
     "firebase": "^10.12.2",
     "locomotive-scroll": "^4.1.4",
     "lucide-react": "^0.394.0",

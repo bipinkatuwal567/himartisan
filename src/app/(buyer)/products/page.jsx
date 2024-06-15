@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import ProductCard from "../../components/productcard";
-import data from "../../data/productlists.json";
+import ProductCard from "../../../components/productcard";
+import data from "../../../data/productlists.json";
 import { useParams, useSearchParams } from "next/navigation";
-import ProductSkeleton from "../../components/productskeleton";
+import ProductSkeleton from "../../../components/productskeleton";
 
 export default function ProductPage() {
   const [products, setProducts] = useState([]);

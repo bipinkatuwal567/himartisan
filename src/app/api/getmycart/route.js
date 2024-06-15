@@ -23,7 +23,6 @@ async function getmycart(request){
                         { status: 200 }
                       );
             }
-
             const products=await prisma.product.findMany({
                   where: {
                         id:{
@@ -32,9 +31,23 @@ async function getmycart(request){
                   }
             })
 
+            const updatedProducts = products.map(product => {
+                  const order = orders.find(order => order.productId === product.id);
+                  if (order) {
+                    return {
+                      ...product,
+                      qty: order.qty
+                    };
+                  } else {
+                    return product;
+                  }
+                });
+
+                console.log(updatedProducts)
+
             if(products){
                   return NextResponse.json(
-                        { success: true, message: "Got products ",products },
+                        { success: true, message: "Got products ",products:updatedProducts },
                         { status: 200 }
                       );
             }
@@ -46,6 +59,7 @@ async function getmycart(request){
                 );
 
       } catch (error) {
+            console.log(error.message)
             return NextResponse.json(
                   { success: false, message: error.message },
                   { status: 500 }

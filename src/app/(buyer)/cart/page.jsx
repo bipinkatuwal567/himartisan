@@ -1,4 +1,4 @@
-import AddToCart from '../../components/AddToCart'
+import AddToCart from '../../../components/AddToCart'
 import React from 'react'
 
 const Page = () => {

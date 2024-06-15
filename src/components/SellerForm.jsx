@@ -43,7 +43,7 @@ const SellerForm = () => {
 
 
   return (
-    <div className="w-full mx-auto p-4  h-screen flex flex-col justify-center sm:w-2/3 md:w-3/6 lg:w-2/6 grainy">
+    <div className="w-full mx-auto p-4  h-screen flex flex-col justify-center sm:w-2/3 md:w-3/6 lg:w-2/6">
       <h2 className=" font-bold text-2xl">Register your store account!</h2>
       <form
         className="bg-white p-4 rounded-lg mt-5 flex flex-col gap-y-5"
