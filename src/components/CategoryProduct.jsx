@@ -2,7 +2,7 @@ import React from 'react'
 
 function CategoryProduct({image, id, title}) {
   return (
-      <div className=' w-72 h-54 bg-[rgba(0,0,0,0.06)] rounded-xl flex flex-col'>
+      <div className=' w-auto h-54 bg-[rgba(0,0,0,0.06)] rounded-xl flex flex-col'>
       <div className='w-full relative h-40  flex justify-center items-center overflow-hidden'>
         <img src='/khukuri.png' alt='basket' className="h-full w-auto hover:scale-105 transition duration-300" />
       </div>
