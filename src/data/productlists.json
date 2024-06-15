@@ -4,7 +4,7 @@
     "imgName": "basket.png",
     "description": "A handcrafted wicker basket, perfect for storage or decoration.",
     "price": 10,
-    "category": "Home Decor",
+    "category": "Home Decor and items",
     "isTrending": false
   },
   {
@@ -20,7 +20,7 @@
     "imgName": "daalo.png",
     "description": "Traditional woven basket used for carrying goods, reflecting cultural craftsmanship.",
     "price": 10,
-    "category": "Home Decor",
+    "category": "Home Decor and items",
     "isTrending": false
   },
   {
@@ -44,8 +44,8 @@
     "imgName": "bhadgaule topi.png",
     "description": "The traditional Nepali cap known as Bhadgaule Topi, representing Nepali heritage.",
     "price": 10,
-    "category": "Apparel",
-    "isTrending": false
+    "category": "Home Decor and items",
+    "isTrending": true
   },
   {
     "title": "Dhimay Drum",
@@ -53,7 +53,7 @@
     "description": "A traditional Nepali drum, Dhimay, played during cultural festivals and processions.",
     "price": 10,
     "category": "Musical Instruments",
-    "isTrending": true
+    "isTrending": false
   },
   {
     "title": "Wooden Flute",
@@ -69,14 +69,14 @@
     "description": "A Piccolo Bandurria, a small string instrument, often used in folk music.",
     "price": 10,
     "category": "Musical Instruments",
-    "isTrending": false
+    "isTrending": true
   },
   {
     "title": "Rustic Floor Cushion",
     "imgName": "rustic_floor_cushion2-removebg-preview.png",
     "description": "A rustic floor cushion, adding comfort and style to your living space.",
     "price": 10,
-    "category": "Home Decor",
+    "category": "Home Decor and items",
     "isTrending": false
   },
   {
@@ -116,8 +116,8 @@
     "imgName": "aastamangal.png",
     "description": "A traditional symbol set representing eight auspicious symbols in Nepali culture.",
     "price": 25,
-    "category": "Household Items",
-    "isTrending": true
+    "category": "Home Decor and items",
+    "isTrending": false
   },
   {
     "title": "Axe",
@@ -140,7 +140,7 @@
     "imgName": "brass lota.png",
     "description": "A traditional brass water container used in various rituals and daily use in Nepali households.",
     "price": 12,
-    "category": "Household Items",
+    "category": "Home Decor and items",
     "isTrending": false
   },
   {
@@ -148,7 +148,7 @@
     "imgName": "brasshandi.jpg",
     "description": "A traditional Nepali brass pot used for cooking and storing water.",
     "price": 18,
-    "category": "Household Items",
+    "category": "Home Decor and items",
     "isTrending": false
   },
   {
@@ -156,16 +156,16 @@
     "imgName": "kaans_plate.png",
     "description": "A traditional plate made from bell metal, used in Nepali households for serving food.",
     "price": 10,
-    "category": "Household Items",
-    "isTrending": true
+    "category": "Home Decor and items",
+    "isTrending": false
   },
   {
     "title": "Karuwa Water Jug",
     "imgName": "karuwa.png",
     "description": "A traditional Nepali water jug, often made of brass, used for serving water.",
     "price": 22,
-    "category": "Household Items",
-    "isTrending": true
+    "category": "Home Decor and items",
+    "isTrending": false
   },
   {
     "title": "Khukuri",
@@ -196,7 +196,7 @@
     "imgName": "trishul.png",
     "description": "A trident, often associated with Hindu deity Shiva, symbolizing power and protection.",
     "price": 30,
-    "category": "Household Items",
+    "category": "Home Decor and items",
     "isTrending": false
   }
 ]

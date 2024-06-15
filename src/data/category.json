@@ -1,8 +1,26 @@
 [
-  "Home Decor",
-  "Furniture",
-  "Musical Instruments",
-  "Apparel",
-  "Weapons",
-  "Household Items"
+  {
+    "Home Decor and Items": {
+      "title": "Elegant Home Decorations",
+      "imgName": "homedecor.png"
+    }
+  },
+  {
+    "Furniture": {
+      "title": "Comfortable and Stylish Furniture",
+      "imgName": "furniture.png"
+    }
+  },
+  {
+    "Musical Instruments": {
+      "title": "Premium Musical Instruments",
+      "imgName": "musical.png"
+    }
+  },
+  {
+    "Weapons": {
+      "title": "Historical and Modern Weapons",
+      "imgName": "weapon.png"
+    }
+  }
 ]
