@@ -60,13 +60,13 @@ const Navbar = () => {
             Cart(2)
           </Link>
           <div className="flex gap-3">
-            <RegisterLink postLoginRedirectURL="/user">
+            <RegisterLink postLoginRedirectURL="http://localhost:3000/user">
               <Button variant={"outline"} className="font-semibold">
                 Sign up
               </Button>
             </RegisterLink>
 
-            <LoginLink postLoginRedirectURL="/user">
+            <LoginLink postLoginRedirectURL="http://localhost:3000/user">
               <Button>Sign in</Button>
             </LoginLink>
           </div>
