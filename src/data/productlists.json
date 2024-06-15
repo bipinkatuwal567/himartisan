@@ -44,7 +44,7 @@
     "imgName": "bhadgaule topi.png",
     "description": "The traditional Nepali cap known as Bhadgaule Topi, representing Nepali heritage.",
     "price": 10,
-    "category": "Home Decor and items",
+    "category": "Home Decor and Items",
     "isTrending": true
   },
   {
@@ -76,7 +76,7 @@
     "imgName": "rustic_floor_cushion2-removebg-preview.png",
     "description": "A rustic floor cushion, adding comfort and style to your living space.",
     "price": 10,
-    "category": "Home Decor and items",
+    "category": "Home Decor and Items",
     "isTrending": false
   },
   {
@@ -116,7 +116,7 @@
     "imgName": "aastamangal.png",
     "description": "A traditional symbol set representing eight auspicious symbols in Nepali culture.",
     "price": 25,
-    "category": "Home Decor and items",
+    "category": "Home Decor and Items",
     "isTrending": false
   },
   {
@@ -140,7 +140,7 @@
     "imgName": "brass lota.png",
     "description": "A traditional brass water container used in various rituals and daily use in Nepali households.",
     "price": 12,
-    "category": "Home Decor and items",
+    "category": "Home Decor and Items",
     "isTrending": false
   },
   {
@@ -148,7 +148,7 @@
     "imgName": "brasshandi.jpg",
     "description": "A traditional Nepali brass pot used for cooking and storing water.",
     "price": 18,
-    "category": "Home Decor and items",
+    "category": "Home Decor and Items",
     "isTrending": false
   },
   {
@@ -156,7 +156,7 @@
     "imgName": "kaans_plate.png",
     "description": "A traditional plate made from bell metal, used in Nepali households for serving food.",
     "price": 10,
-    "category": "Home Decor and items",
+    "category": "Home Decor and Items",
     "isTrending": false
   },
   {
@@ -164,7 +164,7 @@
     "imgName": "karuwa.png",
     "description": "A traditional Nepali water jug, often made of brass, used for serving water.",
     "price": 22,
-    "category": "Home Decor and items",
+    "category": "Home Decor and Items",
     "isTrending": false
   },
   {
@@ -196,7 +196,7 @@
     "imgName": "trishul.png",
     "description": "A trident, often associated with Hindu deity Shiva, symbolizing power and protection.",
     "price": 30,
-    "category": "Home Decor and items",
+    "category": "Home Decor and Items",
     "isTrending": false
   }
 ]
