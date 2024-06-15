@@ -39,6 +39,7 @@ model Buyer{
       name String
       email String @unique
       contactNo String
+      role String?
       createdAt DateTime @default(now())
       isActive Boolean @default(true)
       orders Order[]
@@ -62,11 +63,13 @@ model Seller{
       name String
       email String @unique
       contactNo String
-
+      role String?
       storeName String @unique
+      storeDescription String?
+      citizenshipImagePath String?
+      citizenshipImagePath2 String?
 
-      citizenshipImagePath String
-      citizenshipImagePath2 String
+      storeAddress String?
 
       isVerified Boolean @default(false)
       createdAt DateTime @default(now())

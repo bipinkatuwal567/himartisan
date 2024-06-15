@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 async function register(request){
       try {
-            const {name, email, storeName, contactNo}=await request.json();
+            const {name, email, storeName, contactNo, role, storeAddress, storeDescription}=await request.json();
             const seller=await prisma.seller.findFirst({where:{
                   email
             }})
@@ -20,8 +20,9 @@ async function register(request){
                         email,
                         storeName,
                         contactNo,
-                        citizenshipImagePath: "helo",
-                        citizenshipImagePath2:"asd"
+                        role,
+                        storeAddress,
+                        storeDescription
                   }
             })
             if(newSeller){
