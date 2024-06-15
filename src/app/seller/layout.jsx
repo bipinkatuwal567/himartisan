@@ -40,7 +40,7 @@ const layout = ({ children }) => {
       {/* <Navbar /> */}
       {/* {children} */}
       {/* <!-- component --> */}
-      <div className="min-h-screen bg-gray-50/50">
+      <div className="min-h-screen bg-gray-50/50 grainy">
         <SellerNavbar />
         <div className="p-4 xl:ml-80">
           <nav className="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
