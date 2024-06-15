@@ -14,7 +14,7 @@ const page = () => {
     if (isBuyer) {
       router.push("/newBuyer");
     } else {
-      router.push("/seller/newSeller");
+      router.push("/newSeller");
     }
   };
 

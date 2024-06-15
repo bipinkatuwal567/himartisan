@@ -66,7 +66,7 @@ const Navbar = () => {
               </Button>
             </RegisterLink>
 
-            <LoginLink postLoginRedirectURL="http://localhost:3000/user">
+            <LoginLink postLoginRedirectURL="http://localhost:3000">
               <Button>Sign in</Button>
             </LoginLink>
           </div>
