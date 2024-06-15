@@ -26,6 +26,7 @@ const AddToCart = () => {
                   height={70}
                   width={70}
                   className=" bg-gray-200 rounded-md"
+                  alt={"Product Image"}
                 />
                 <div className="flex flex-col">
                   <p className=" font-bold">

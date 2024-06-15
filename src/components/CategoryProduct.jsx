@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 function CategoryProduct({image, id, title}) {
@@ -7,10 +8,10 @@ function CategoryProduct({image, id, title}) {
         <img src='/khukuri.png' alt='basket' className="h-full w-auto hover:scale-105 transition duration-300" />
       </div>
       <div className='flex-grow p-4 flex justify-center items-end'>
-            <a href={`products?category=${title}`} className='w-full'>
+            <Link href={`products?category=${title}`} className='w-full'>
                   
         <button className='bg-white py-2 rounded-lg w-full text-sm  hover:bg-[rgba(255,255,255,0.8)]'>{title}</button>
-            </a>
+            </Link>
       </div>
     </div>
   );
