@@ -1,25 +1,11 @@
 import React from "react";
-import AvatarComponent from "../../components/AvatarComponent";
-import SellerFooter from "../../components/SellerFooter";
+
+import TopNavbarSeller from "../../components/TopNavbarSeller";
 
 const page = () => {
   return (
-    <div className="p-4 xl:ml-80">
-      <nav className="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
-        <div className="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
-          <div className="capitalize">
-            <h6 className="block antialiased tracking-normal font-sans text-lg font-semibold leading-relaxed text-gray-900">
-              Dashboard
-            </h6>
-          </div>
-
-          <AvatarComponent
-            img={"https://github.com/shadcn.png"}
-            altName="CN"
-            list={["Profile", "Billing", "Team"]}
-          />
-        </div>
-      </nav>
+    <div className="p-4 xl:ml-80 min-h-screen relative">
+      <TopNavbarSeller />
 
       <div className="mt-12">
         <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
@@ -144,7 +130,6 @@ const page = () => {
         </div>
       </div>
 
-      <SellerFooter />
     </div>
   );
 };

@@ -67,7 +67,11 @@ const Navbar = () => {
             Cart(2)
           </Link>
           {user ? (
-            <AvatarComponent img={user.picture} altName={user.given_name} email={user.email} />
+            <AvatarComponent
+              img={user.picture}
+              altName={user.given_name}
+              email={user.email}
+            />
           ) : (
             <div className="flex gap-3">
               <RegisterLink postLoginRedirectURL="http://localhost:3000/user">
@@ -114,7 +118,10 @@ const Navbar = () => {
           </Link>
           {user ? (
             <LogoutLink>
-              <Button> <LuLogOut className="mr-2 w-4 h-4" />  Logout</Button>
+              <Button>
+                {" "}
+                <LuLogOut className="mr-2 w-4 h-4" /> Logout
+              </Button>
             </LogoutLink>
           ) : (
             <div className="flex gap-3">

@@ -1,13 +1,7 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-
-const HomePage = async () => {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
-  console.log(user);
-  
+const HomePage = () => {
   return (
     <div className="bg-white gap-4 flex flex-col lg:flex-row mt-3 justify-between lg:justify-evenly w-full p-4 rounded-lg h-[calc(100vh-8.5rem)] lg:gap-16 ring-[2px] ring-gray-200 overflow-hidden grainy">
       <div className="flex-shrink-0 lg:w-1/2 justify-self-center  mt-2">
