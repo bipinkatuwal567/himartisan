@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 async function register(request){
       try {
-            const {name, email,  contactNo,role}=await request.json();
+            const {name, email,  contactNo}=await request.json();
             
             const buyer=await prisma.buyer.findFirst({where:{
                   email
@@ -12,7 +12,7 @@ async function register(request){
             if(buyer){
                   return NextResponse.json(
                         { success: false, message: "Buyer already Exists" },
-                        { status: 400 }
+                        { status: 200 }
                       );
             }
             const newBuyer =await prisma.buyer.create({
@@ -20,7 +20,7 @@ async function register(request){
                         name,
                         email,
                         contactNo,
-                        role
+                        role:"Buyer"
                   }
             })
             console.log(newBuyer)

@@ -11,7 +11,7 @@ async function register(request){
             if(seller){
                   return NextResponse.json(
                         { success: false, message: "Seller already Exists" },
-                        { status: 400 }
+                        { status: 200 }
                       );
             }
             const newSeller =await prisma.seller.create({
@@ -33,7 +33,7 @@ async function register(request){
             }
             return NextResponse.json(
                   { success: false, message: "Seller Registered Failed " },
-                  { status: 400 }
+                  { status: 200 }
                 );
 
       } catch (error) {
