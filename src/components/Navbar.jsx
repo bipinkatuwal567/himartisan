@@ -43,7 +43,7 @@ const Navbar = () => {
             className={`hover:bg-gray-200/70 px-3 py-2 rounded-md ${
               pathName === "/products" ? "text-[#FF5315]" : null
             }`}
-            href={"/products"}
+            href={"/products?category=all"}
           >
             Product
           </Link>

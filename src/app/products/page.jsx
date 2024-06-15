@@ -14,7 +14,6 @@ export default function ProductPage(){
   const search = searchParams.get('category')
 
   useEffect(()=>{
-      setIsLoading(true)
       if(search==="all"){
             setIsLoading(false)
             return setProducts(data)
