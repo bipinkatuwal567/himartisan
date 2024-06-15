@@ -5,6 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaXmark } from "react-icons/fa6";
 import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
+import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
 
 const Navbar = () => {
   const pathName = usePathname();
@@ -97,7 +98,8 @@ const Navbar = () => {
           </Link>
           <Link href={"/"}>
             <Button variant={"outline"} className="font-semibold">
-              Sign up
+              {/* Sign up */}
+              <RegisterLink>Sign Up</RegisterLink>
             </Button>
           </Link>
           <Link href={"/"}>
