@@ -3,6 +3,8 @@ import React from "react";
 
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+
 
 import Navbar from "../../components/Navbar";
 import FooterPage from "../../components/FooterPage";
@@ -20,9 +22,12 @@ const layout = ({ children }) => {
     requestAnimationFrame(raf);
   }, []);
 
+  const { getUser } = useKindeBrowserClient();
+  const user = getUser();
+
   return (
     <>
-      <Navbar />
+      <Navbar user={user}/>
       {children}
       <FooterPage />
     </>

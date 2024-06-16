@@ -1,14 +1,14 @@
 import prisma from "../../../db/dbconfig";
 import { NextResponse } from "next/server";
 async function addtoCart(request){
-      const {email, productId}=await request.json()
+      const {email, productId, }=await request.json()
      try {
 
-      const product=await prisma.product.findFirst({
+      const user=await prisma.buyer.findFirst({
             where:{email}
       })
 
-      const user=await prisma.buyer.findFirst({
+      const product=await prisma.product.findFirst({
             where:{id:productId}
       })
 
@@ -22,6 +22,7 @@ async function addtoCart(request){
             data:{
                   productId:product.id,
                   userId:user.id,
+                  qty:1
                   // product:product,
                   // user:user
             }
@@ -42,6 +43,7 @@ async function addtoCart(request){
           );
 
      } catch (error) {
+      console.log(error.message)
       return NextResponse.json(
             { success: false, message: error.message },
             { status: 500 }

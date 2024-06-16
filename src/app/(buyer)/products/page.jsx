@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
-import ProductCard from "../../components/productcard";
-import data from "../../data/productlists.json";
+import ProductCard from "../../../components/productcard";
+import data from "../../../data/productlists.json";
 import { useParams, useSearchParams } from "next/navigation";
-import ProductSkeleton from "../../components/productskeleton";
+import ProductSkeleton from "../../../components/productskeleton";
+import axios from "axios";
 
 export default function ProductPage() {
   const [products, setProducts] = useState([]);
@@ -14,20 +15,32 @@ export default function ProductPage() {
   const search = searchParams.get("category");
 
   useEffect(() => {
-    setIsLoading(true);
-    if (search === "All") {
-      setIsLoading(false);
-      return setProducts(data);
-    }
-
-    if (search !== null) {
-      const tempproducts = data.filter(
-        (product) => product.category === search
-      );
-      setProducts(tempproducts);
-      setIsLoading(false);
-    }
-  }, [search]);
+      async function fetchData() {
+        try {
+          setIsLoading(true); // Start loading
+          console.log("Nice ork")
+          const response = await axios.get('http://localhost:3000/api/getproducts');
+          console.log(response.data.products)
+          if (response.data.success) {
+            if (search === "All") {
+              setProducts(response.data.products);
+            } else {
+              const filteredProducts = response.data.products.filter(
+                (product) => product.category === search
+              );
+              setProducts(filteredProducts);
+            }
+          }
+        } catch (error) {
+          console.error("Error fetching products:", error);
+          // Handle error state appropriately
+        } finally {
+          setIsLoading(false); // Stop loading
+        }
+      }
+  
+      fetchData();
+    }, [search]); // Dependency on 'search' state
 
   return (
     <div className="mt-8 w-full flex flex-col mx-auto">
@@ -50,11 +63,12 @@ export default function ProductPage() {
           <>
             {products.map((product) => (
               <ProductCard
-                key={product.title}
-                name={product.title}
+              id={product.id}
+                key={product.name}
+                name={product.name}
                 description={product.description}
                 price={product.price}
-                imgName={product.imgName}
+                imgName={product.ImagePath}
               />
             ))}
           </>

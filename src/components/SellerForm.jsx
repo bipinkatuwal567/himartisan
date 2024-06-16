@@ -4,8 +4,9 @@ import { Button } from "./ui/button";
 import {useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs";
 import axios from 'axios'
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 const SellerForm = () => {
-
+      const router=useRouter()
       const [isLoading, setIsLoading]=useState(false)
       const [store, setStore]=useState("")
       const [storeDesc,setStoreDesc]=useState("")
@@ -27,9 +28,15 @@ const SellerForm = () => {
                         console.log(res)
                         if(res.data.success){
                               toast.success("Seller Registered", {id:toastid})
+                              setTimeout(()=>{
+                                    router.replace('/')
+                        },3000)
                         }
                         else{
                               toast.error(res.data.message, {id:toastid})
+                              setTimeout(()=>{
+                                    router.replace('/')
+                        },3000)
                         }
                   })
       
@@ -43,7 +50,7 @@ const SellerForm = () => {
 
 
   return (
-    <div className="w-full mx-auto p-4  h-screen flex flex-col justify-center sm:w-2/3 md:w-3/6 lg:w-2/6 grainy">
+    <div className="w-full mx-auto p-4  h-screen flex flex-col justify-center sm:w-2/3 md:w-3/6 lg:w-2/6">
       <h2 className=" font-bold text-2xl">Register your store account!</h2>
       <form
         className="bg-white p-4 rounded-lg mt-5 flex flex-col gap-y-5"

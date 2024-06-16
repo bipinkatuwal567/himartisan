@@ -1,8 +1,67 @@
-import React from "react";
+"use client"
 
+import React, { useEffect, useState } from "react";
+import AvatarComponent from "../../components/AvatarComponent";
+import SellerFooter from "../../components/SellerFooter";
+import axios from "axios";
+import {useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs";
 import TopNavbarSeller from "../../components/TopNavbarSeller";
+import toast from "react-hot-toast";
+import { Router } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-const page = () => {
+
+const Page =  () => {
+      const [data, setData]=useState({
+            sales:0, buyers:0
+      })
+
+      const [isLoading, setIsLoading]=useState(true)
+      const [isSeller, setIsSeller]=useState(false)
+
+
+      const router=useRouter()
+
+      const {user}=useKindeBrowserClient();
+      const email=user?.email || ""
+      console.log(user?.email)
+      useEffect(()=>{
+            async function getSales(){
+                 try {
+                  await axios.post('/api/getSales', {email})
+                  .then(res=>{
+                        console.log(res.data)
+                        if(res.data.success){
+                              console.log(res.data.totalSales)
+                              setIsSeller(true);
+                              setData({...data,buyers:res.data.buyers.length, sales: res.data.totalSales})
+                              setIsLoading(false)
+                        } else{
+                              
+                              setTimeout(()=>{
+                                    router.replace('/')
+                              },1000)
+                        }
+                  })
+                 } catch (error) {
+                        console.log("nothign")
+                 } finally{
+                  setIsLoading(false)
+                 }
+            }
+
+            getSales()
+      },[])
+
+
+      if(isLoading || !isSeller){
+            return(
+                  <div className="p-4 xl:ml-80 min-h-screen relative">
+                        {isLoading && !isSeller ?"Verifying You":"Your are not a seller Redirecting to Home Page"}
+                  </div>
+            )
+      }
+
   return (
     <div className="p-4 xl:ml-80 min-h-screen relative">
       <TopNavbarSeller />
@@ -32,7 +91,7 @@ const page = () => {
                 Today's Money
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                $53k
+                {`$${data.sales}.00`}
               </h4>
             </div>
             <div className="border-t border-blue-gray-50 p-4">
@@ -63,7 +122,7 @@ const page = () => {
                 Today's Users
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                2,300
+                {data.buyers}
               </h4>
             </div>
             <div className="border-t border-blue-gray-50 p-4">
@@ -90,7 +149,7 @@ const page = () => {
                 New Clients
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                3,462
+                {data.buyers}
               </h4>
             </div>
             <div className="border-t border-blue-gray-50 p-4">
@@ -134,4 +193,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

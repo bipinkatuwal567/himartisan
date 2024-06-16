@@ -3,6 +3,7 @@ import React, { use, useState } from "react";
 import AvatarComponent from "../../../components/AvatarComponent";
 import { Button } from "../../../components/ui/button";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import axios from "axios";
 
 const page = () => {
   const { getUser } = useKindeBrowserClient();
@@ -11,8 +12,12 @@ const page = () => {
   const [username, setUsername] = useState("");
   const authUsername = String(`${user?.given_name} ${user?.family_name}`);
 
-  function handleSubmit() {
+ async  function handleSubmit() {
     console.log(username);
+
+    await axios.post("/api/updateuser", {name:username, email:user.email}).then((res)=>{
+      console.log(res.data)
+    })
   }
 
   return (
