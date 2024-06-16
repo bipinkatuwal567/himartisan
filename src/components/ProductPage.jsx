@@ -6,7 +6,6 @@ import ProductSkeleton from "../components/productskeleton";
 
 const ProductPage = ({AllProducts}) => {
   const [products, setProducts] = useState(AllProducts.length>8 ? AllProducts.slice(0,8): AllProducts);
-      console.log(products)
   return (
     <div className="mt-12 w-full flex flex-col mx-auto">
       <h2 className=" justify-self-start mb-5 font-semibold text-xl">
@@ -21,7 +20,7 @@ const ProductPage = ({AllProducts}) => {
                 key={product.name}
                 id={product.id}
                 imgName={product.ImagePath}
-                name={product.title}
+                name={product.name}
                 description={product.description}
                 price={product.price}
               />

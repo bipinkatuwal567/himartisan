@@ -31,7 +31,7 @@ function ProductCard({ id, name, description, price, imgName }) {
           <CardDescription className="text-sm truncate">
             {description}
           </CardDescription>
-          <p>${price}.00</p>
+          <p>Rs. {price}.00</p>
         </CardContent>
       </Link>
     </Card>
