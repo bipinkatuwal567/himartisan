@@ -14,7 +14,7 @@ function ProductCard({ id, name, description, price, imgName }) {
       const url=`https://firebasestorage.googleapis.com/v0/b/first-hackathon-ecommerce.appspot.com/o/${image}?alt=media&token=6277845b-c2ca-43fb-931a-be27634e4069`
 
   return (
-    <Card className="w-full h-96 sm:w-auto sm:h-72 bg-transparent flex flex-col">
+    <Card className="w-full h-96 sm:w-auto sm:h-80 bg-transparent flex flex-col">
       <CardHeader className="className='w-full overflow-hidden relative h-2/3 bg-[rgba(0,0,0,0.06)] flex justify-center items-center overflow-hidden'">
         <img
           src={url}
