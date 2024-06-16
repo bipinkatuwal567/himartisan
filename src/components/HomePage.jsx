@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 const HomePage = () => {
   return (
@@ -51,7 +52,9 @@ const HomePage = () => {
         <h2 className="font-semibold text-xl sm:text-2xl lg:text-3xl shrink ">
           Nepal's Legendary Curved Knife, Artisanal Masterpiece .
         </h2>
-        <Button className="self-start lg:mt-3">Shop now</Button>
+        <Link href="/product/666e38c396774d226e1f2720">
+        <Button className="self-start lg:mt-3" >Shop now</Button>
+        </Link>
       </div>
     </div>
   );
