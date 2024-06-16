@@ -21,11 +21,13 @@ const AvatarComponent = ({ altName, img, list, email }) => {
       <DropdownMenuTrigger className="outline-none border-none">
         <Avatar>
           <AvatarImage src={img} />
-          <AvatarFallback>{altName}</AvatarFallback>
+          <AvatarFallback className="bg-orange-500 text-white">
+            {altName && altName.charAt(0)}
+          </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[10rem] mr-5 flex flex-col items-center">
-        <DropdownMenuLabel className="text-sm font-normal text-gray-500">
+        <DropdownMenuLabel className="text-sm font-normal truncate text-gray-500">
           {email}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />

@@ -14,16 +14,18 @@ import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import AvatarComponent from "./AvatarComponent";
 import { LuLogOut } from "react-icons/lu";
 
-const Navbar = ({user}) => {
+const Navbar = () => {
   const pathName = usePathname();
   const [openMenu, setOpenMenu] = useState(false);
 
-//   const { getUser } = useKindeBrowserClient();
-//   const user = getUser();
+  const { getUser } = useKindeBrowserClient();
+  const user = getUser();
+
+  console.log(user);
 
   return (
     <nav className="flex w-full justify-between flex-col sm:flex-row items-center py-2 sticky top-0 z-50 bg-transparent">
-      <div className="flex backdrop-blur-xl grainy/90 justify-between w-full sticky top-0 h-[4.5rem] items-center px-4 py-2 rounded-xl shadow-md">
+      <div className="flex backdrop-blur-2xl grainy/90 justify-between w-full sticky top-0 h-[4.5rem] items-center px-4 py-2 rounded-xl shadow-md">
         <Link href={"/"} className="font-bold text-xl uppercase">
           Himartisan
         </Link>

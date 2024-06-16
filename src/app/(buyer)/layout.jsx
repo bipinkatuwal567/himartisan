@@ -27,7 +27,7 @@ const layout = ({ children }) => {
 
   return (
     <>
-      <Navbar user={user}/>
+      <Navbar/>
       {children}
       <FooterPage />
     </>
