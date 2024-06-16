@@ -20,7 +20,6 @@ const AddToCart = () => {
     async function getMyCart() {
       try {
         const response = await axios.get('/api/getmycart', { params: { email } });
-        console.log(response.data);
         if (response.data.success) {
           setCart(response.data.products);
         }
@@ -67,11 +66,9 @@ const AddToCart = () => {
     }
    try {
       await axios.post('/api/placeorder',{email, cart}).then((res)=>{
-            console.log(res.data)
           });
       
    } catch (error) {
-      console.log(error)
    }
     // Generate a unique transaction UUID
     const uuid = new Date().getTime().toString().slice(-6);
@@ -110,7 +107,7 @@ const AddToCart = () => {
     form.setAttribute("method", "post");
     form.setAttribute("action", url);
     document.body.appendChild(form);
-//     form.submit();
+    form.submit();
 
    
 
@@ -142,6 +139,7 @@ const AddToCart = () => {
                   name={item.name}
                   price={item.price}
                   qty={item.qty}
+                  ImagePath={item.ImagePath}
                   setQty={(newQty) => {
                     // Update quantity of the specific item in cart
                     const updatedCart = cart.map((cartItem) =>
@@ -160,7 +158,7 @@ const AddToCart = () => {
           </tbody>
         </table>
         {!isLoading && cart && cart.length === 0 && <div>No Products to Show</div>}
-        {isLoading && <div>Fetching Product</div>}
+        {isLoading && <tr><div>Fetching Product</div></tr>}
 
         <div className="flex flex-col w-2/3 md:w-2/4 border-t border-t-gray-300 pt-5 lg:pt-0 lg:w-1/3 gap-6 border-l pl-4 lg:border-0">
           <p className="font-bold">Summary</p>
@@ -174,14 +172,18 @@ const AddToCart = () => {
             <p className="font-bold">${grandTotal.toFixed(2)}</p>
           </div>
 
-          {email ? <Button onClick={handleCheckout}>Checkout</Button> : <Button onClick={LoginLink}>Login to checkout</Button>}
+          {email ? <Button onClick={handleCheckout}>{isLoading? "Checking Out":"Checkout"}</Button> : <Button onClick={LoginLink}>Login to checkout</Button>}
         </div>
       </div>
     </div>
   );
 };
 
-function CartCard({ id, name, price, qty, setQty, handleDelete }) {
+function CartCard({ id, name, price, qty, setQty, handleDelete , ImagePath}) {
+
+
+      const image=`Images%2F${ImagePath?.split("/")[1]}`
+                  const url=`https://firebasestorage.googleapis.com/v0/b/first-hackathon-ecommerce.appspot.com/o/${image}?alt=media&token=6277845b-c2ca-43fb-931a-be27634e4069`
   const handleQtyChange = (newQty) => {
     if (newQty >= 1) {
       setQty(newQty);
@@ -192,7 +194,7 @@ function CartCard({ id, name, price, qty, setQty, handleDelete }) {
     <tr className="mt-5 grid grid-cols-4 sm:grid-cols-3 w-full place-items-start justify-items-start gap-10">
       <td className="flex items-center gap-3 col-span-2 sm:col-span-1">
         <Image
-          src={"/khukuri.png"}
+          src={url}
           height={70}
           width={70}
           className="bg-gray-200 rounded-md"
