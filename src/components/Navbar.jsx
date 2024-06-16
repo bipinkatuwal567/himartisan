@@ -14,12 +14,12 @@ import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import AvatarComponent from "./AvatarComponent";
 import { LuLogOut } from "react-icons/lu";
 
-const Navbar = () => {
+const Navbar = ({user}) => {
   const pathName = usePathname();
   const [openMenu, setOpenMenu] = useState(false);
 
-  const { getUser } = useKindeBrowserClient();
-  const user = getUser();
+//   const { getUser } = useKindeBrowserClient();
+//   const user = getUser();
 
   return (
     <nav className="flex w-full justify-between flex-col sm:flex-row items-center py-2 sticky top-0 z-50 bg-transparent">
@@ -64,7 +64,7 @@ const Navbar = () => {
             }`}
             href={"/cart"}
           >
-            Cart(2)
+            Cart
           </Link>
           {user ? (
             <AvatarComponent

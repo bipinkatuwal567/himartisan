@@ -4,10 +4,12 @@ import { Button } from "./ui/button";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const BuyerForm = () => {
   const [number, setNumber] = useState("");
   const { user } = useKindeBrowserClient();
+  const router=useRouter()
 
   const [loading, setIsLoading] = useState(false);
 
@@ -26,8 +28,14 @@ const BuyerForm = () => {
           console.log(res);
           if (res.data.success) {
             toast.success("User Registered", { id: toastid });
+            setTimeout(()=>{
+                  router.replace('/')
+      },3000)
           } else {
             toast.error(res.data.message, { id: toastid });
+            setTimeout(()=>{
+                  router.replace('/')
+      },3000)
           }
         });
     } catch (error) {

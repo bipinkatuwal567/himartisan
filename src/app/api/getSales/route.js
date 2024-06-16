@@ -8,7 +8,9 @@ async function getSales(request){
             where:{email}
       })
 
-      console.log(seller)
+      if(!seller){
+            return NextResponse.json({success:false, message:"You are not a seller"}, {status:200})
+      }
       try {
             const sales=await prisma.sales.findMany({
                   where:{

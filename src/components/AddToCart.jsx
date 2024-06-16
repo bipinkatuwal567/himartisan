@@ -65,7 +65,14 @@ const AddToCart = () => {
       LoginLink();
       return;
     }
-
+   try {
+      await axios.post('/api/placeorder',{email, cart}).then((res)=>{
+            console.log(res.data)
+          });
+      
+   } catch (error) {
+      console.log(error)
+   }
     // Generate a unique transaction UUID
     const uuid = new Date().getTime().toString().slice(-6);
 
@@ -103,7 +110,9 @@ const AddToCart = () => {
     form.setAttribute("method", "post");
     form.setAttribute("action", url);
     document.body.appendChild(form);
-    form.submit();
+//     form.submit();
+
+   
 
     setIsLoading(false);
   }

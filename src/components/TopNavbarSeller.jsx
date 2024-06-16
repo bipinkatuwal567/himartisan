@@ -7,7 +7,6 @@ const TopNavbarSeller = () => {
   const { getUser } = useKindeBrowserClient();
   const user = getUser();
 
-  console.log(user);
 
   return (
     <nav className="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
