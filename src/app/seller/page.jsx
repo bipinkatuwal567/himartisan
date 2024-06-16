@@ -80,12 +80,12 @@ const Page =  () => {
                 Today's Money
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                {`$${data.sales}.00`}
+                {`Rs. ${data.sales}`}
               </h4>
             </div>
             <div className="border-t border-blue-gray-50 p-4">
               <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                <strong className="text-green-500">+55%</strong>&nbsp;than last
+                <strong className="text-green-500">0%</strong>&nbsp;than last
                 week
               </p>
             </div>
@@ -116,7 +116,7 @@ const Page =  () => {
             </div>
             <div className="border-t border-blue-gray-50 p-4">
               <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                <strong className="text-green-500">+3%</strong>&nbsp;than last
+                <strong className="text-green-500">-0%</strong>&nbsp;than last
                 month
               </p>
             </div>
@@ -165,12 +165,12 @@ const Page =  () => {
                 Sales
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                $103,430
+               Rs. 0
               </h4>
             </div>
             <div className="border-t border-blue-gray-50 p-4">
               <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                <strong className="text-green-500">+5%</strong>&nbsp;than
+                <strong className="text-green-500">0%</strong>&nbsp;than
                 yesterday
               </p>
             </div>

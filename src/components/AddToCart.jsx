@@ -164,12 +164,12 @@ const AddToCart = () => {
           <p className="font-bold">Summary</p>
           <div className="flex gap-2 justify-between">
             <p className="text-gray-600">Delivery Charge</p>
-            <p className="text-gray-600">$0</p>
+            <p className="text-gray-600">Rs. {grandTotal.toFixed(2)}</p>
           </div>
 
           <div className="flex gap-2 justify-between">
             <p className="font-bold">Grand Total</p>
-            <p className="font-bold">${grandTotal.toFixed(2)}</p>
+            <p className="font-bold">Rs. {grandTotal.toFixed(2)}</p>
           </div>
 
           {email ? <Button onClick={handleCheckout}>{isLoading? "Checking Out":"Checkout"}</Button> : <Button onClick={LoginLink}>Login to checkout</Button>}
@@ -202,7 +202,7 @@ function CartCard({ id, name, price, qty, setQty, handleDelete , ImagePath}) {
         />
         <div className="flex flex-col">
           <p className="font-bold">{name}</p>
-          <p className="text-gray-600">{`$${price.toFixed(2)}`}</p>
+          <p className="text-gray-600">{`Rs. ${price.toFixed(2)}`}</p>
         </div>
       </td>
 
@@ -225,7 +225,7 @@ function CartCard({ id, name, price, qty, setQty, handleDelete , ImagePath}) {
       </td>
 
       <td className="flex items-center flex-col sm:flex-row gap-2 md:gap-5">
-        <p className="text-gray-600">{`$${(qty * price).toFixed(2)}`}</p>
+        <p className="text-gray-600">{`Rs. ${(qty * price).toFixed(2)}`}</p>
         <FaTrash className="w-4 h-4 cursor-pointer" onClick={handleDelete} />
       </td>
     </tr>
