@@ -18,6 +18,7 @@ import {
 
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 const Page = () => {
   const { getUser } = useKindeBrowserClient();
   const user = getUser();
@@ -29,22 +30,22 @@ const Page = () => {
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const inputRef = React.useRef(null);
+  const selectRef=React.useRef(null)
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isLoading, setIsLoading] = useState(false);
-
+      console.log(selectedCategory)
   async function hanldeSubmit() {
     setIsLoading(true);
-    console.log(image);
+    const toastId=toast.loading("Adding Product...")
     try {
+      console.log(selectRef)
       const file = inputRef.current.files[0];
-      console.log(file.name.split(".")[1]);
       const ImagePath = `Images/${Math.floor(new Date().getTime() / 1000)}.${
         file.name.split(".")[1]
       }`;
       const fileRef = ref(storage, ImagePath);
       const snapshot = await uploadBytes(fileRef, file);
-      console.log("Uploaded", snapshot);
-
+      console.log(selectedCategory)
       await axios
         .post("/api/addproduct", {
           name: title,
@@ -55,12 +56,11 @@ const Page = () => {
           category: selectedCategory,
         })
         .then((res) => {
-          console.log(res.data);
+            if(res.data.success)
+                  toast.success("Added Successfully", {id:toastId})
         });
-      console.log("submitted");
-      router.push('/seller')
+      // router.push('/seller')
     } catch (error) {
-      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -145,20 +145,17 @@ const Page = () => {
           <label htmlFor="">
             Product Category<span className="text-red-500">*</span>
           </label>
-          <Select>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Select a Category" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup  value={selectedCategory} onChange={(e)=>setSelectedCategory(e.target.value)}>
-                <SelectItem value="Furniture">Furniture</SelectItem>
-                <SelectItem value="Home Decor and Items">Home Decor and Items</SelectItem>
-                <SelectItem value="Weapons">Weapons</SelectItem>
-                <SelectItem value="Musical Instruments">Musical Instruments</SelectItem>
-
-              </SelectGroup>
-            </SelectContent>
-          </Select>
+          <select
+        className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+        value={selectedCategory}
+        onChange={(e)=>setSelectedCategory(e.target.value)}
+      >
+        <option value="">Select a Category</option>
+        <option value="Furniture">Furniture</option>
+        <option value="Home Decor and Items">Home Decor and Items</option>
+        <option value="Weapons">Weapons</option>
+        <option value="Musical Instruments">Musical Instruments</option>
+      </select>
         </div>
 
         <div className="w-full flex flex-col gap-2">
