@@ -1,27 +1,28 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaXmark } from "react-icons/fa6";
 import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
-import {
-  RegisterLink,
-  LoginLink,
-  LogoutLink,
-} from "@kinde-oss/kinde-auth-nextjs/components";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+
 import AvatarComponent from "./AvatarComponent";
 import { LuLogOut } from "react-icons/lu";
+import { signIn, signOut, useSession } from "next-auth/react";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const pathName = usePathname();
   const [openMenu, setOpenMenu] = useState(false);
 
-  const { getUser } = useKindeBrowserClient();
-  const user = getUser();
+const {data:session}=useSession()
+console.log(session)
 
-  console.log(user);
+useEffect(()=>{
+      if(session?.user.role===null){
+            toast.error("Your account signup is incomplete! Please complete the registration process.", {duration:5000})
+      }
+},[session])
 
   return (
     <nav className="flex w-full justify-between flex-col sm:flex-row items-center py-2 sticky top-0 z-50 bg-transparent">
@@ -68,23 +69,20 @@ const Navbar = () => {
           >
             Cart
           </Link>
-          {user ? (
+         
+          {session?.user ? (
             <AvatarComponent
-              img={user.picture}
-              altName={user.given_name}
-              email={user.email}
+              img={session.user.image}
+              altName={session.user.name}
+              email={session.user.email}
             />
           ) : (
             <div className="flex gap-3">
-              <RegisterLink postLoginRedirectURL="http://localhost:3000/user">
-                <Button variant={"outline"} className="font-semibold">
+                <Button variant={"outline"} className="font-semibold" onClick={()=>signIn("google", {callbackUrl:"http://localhost:3000/user"})}>
                   Sign up
                 </Button>
-              </RegisterLink>
 
-              <LoginLink postLoginRedirectURL="http://localhost:3000">
-                <Button>Sign in</Button>
-              </LoginLink>
+                <Button onClick={()=>signIn("google")}>Sign in</Button>
             </div>
           )}
         </div>
@@ -118,24 +116,18 @@ const Navbar = () => {
           >
             Cart
           </Link>
-          {user ? (
-            <LogoutLink>
-              <Button>
+          {session?.user ? (
+              <Button onClick={()=>signOut()}>
                 {" "}
                 <LuLogOut className="mr-2 w-4 h-4" /> Logout
               </Button>
-            </LogoutLink>
           ) : (
-            <div className="flex gap-3">
-              <RegisterLink postLoginRedirectURL="http://localhost:3000/user">
+            <div className="flex gap-3" onClick={()=>{signIn("google", {callbackUrl:"/user"})}}>
                 <Button variant={"outline"} className="font-semibold">
                   Sign up
                 </Button>
-              </RegisterLink>
 
-              <LoginLink postLoginRedirectURL="http://localhost:3000">
-                <Button>Sign in</Button>
-              </LoginLink>
+                <Button onClick={()=>{signIn("google")}}>Sign in</Button>
             </div>
           )}
         </div>

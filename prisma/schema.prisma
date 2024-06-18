@@ -34,16 +34,75 @@ model Product{
       sales sales[]
 }
 
-model Buyer{
+model Account{
       id String @id @default(auto()) @map("_id") @db.ObjectId
-      name String
-      email String @unique
-      contactNo String
+      userId String @db.ObjectId
+      type String
+      provider String
+      providerAccountId String
+      refresh_token String? @db.String
+      access_token String? @db.String
+      expires_at Int?
+      token_type String?
+      scope String?
+      id_token String? @db.String
+      session_state String?
+
+      user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+      @@unique([provider, providerAccountId])
+}
+
+
+
+model User {
+      id String @id @default(auto()) @map("_id") @db.ObjectId
+      name String?
+      email String? @unique
+      emailVerified DateTime?
+      image String?
       role String?
       createdAt DateTime @default(now())
       isActive Boolean @default(true)
+
+      accounts Account[]
+      sessions session[]
+      buyers Buyer[]
+      sellers Seller[]
+}
+model session {
+      id String @id @default(auto()) @map("_id") @db.ObjectId
+      sessionToken String @unique
+      userId String @db.ObjectId
+      Expires DateTime
+      user User @relation(fields: [userId], references: [id], onDelete:Cascade)
+}
+
+
+model Buyer{
+      id String @id @default(auto()) @map("_id") @db.ObjectId
+      userId String @db.ObjectId
+      user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+      contactNo String?
       orders Order[]
       cart Cart[]
+}
+
+model Seller{
+       id String @id @default(auto()) @map("_id") @db.ObjectId
+      userId String @db.ObjectId
+      user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+      storeName String @unique
+      storeDescription String?
+      citizenshipImagePath String?
+      citizenshipImagePath2 String?
+      contactNo String?
+      storeAddress String?
+      isVerified Boolean @default(false)
+      createdAt DateTime @default(now())
+      isActive Boolean @default(false)
+      products Product[]
+
 }
 
 model Cart{
@@ -57,38 +116,15 @@ model Cart{
 
 }
 
-
-model Seller{
-      id String @id @default(auto()) @map("_id") @db.ObjectId
-      name String
-      email String @unique
-      contactNo String
-      role String?
-      storeName String @unique
-      storeDescription String?
-      citizenshipImagePath String?
-      citizenshipImagePath2 String?
-
-      storeAddress String?
-
-      isVerified Boolean @default(false)
-      createdAt DateTime @default(now())
-      isActive Boolean @default(false)
-      products Product[]
-
-}
-
 model sales{
       id String @id @default(auto()) @map("_id") @db.ObjectId
-
+      pricePaid Int
       buyer String @db.ObjectId
       seller String @db.ObjectId
       product   Product  @relation(fields: [productId], references: [id])
       productId String   @db.ObjectId
       createdAt DateTime @default(now())
-
 }
-
 
 model Order{
       is String @id @default(auto()) @map("_id") @db.ObjectId
@@ -100,7 +136,6 @@ model Order{
       product Product @relation(fields: [productId], references: [id], onDelete: Restrict)
       productId String @db.ObjectId
 }
-
 
 
 

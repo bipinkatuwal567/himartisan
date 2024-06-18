@@ -2,11 +2,10 @@
 import React from "react";
 import AvatarComponent from "../components/AvatarComponent";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import { useSession } from "next-auth/react";
 
 const TopNavbarSeller = () => {
-  const { getUser } = useKindeBrowserClient();
-  const user = getUser();
-
+const {data:session}=useSession()
 
   return (
     <nav className="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
@@ -18,8 +17,8 @@ const TopNavbarSeller = () => {
         </div>
 
         <AvatarComponent
-          img={user?.picture}
-          altName={user?.given_name}
+          img={session?.user?.image}
+          altName={session?.user?.name}
           list={["Dashboard", "Profile", "Add Product"]}
         />
       </div>

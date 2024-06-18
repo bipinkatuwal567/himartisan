@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { Button } from "./ui/button";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -11,7 +10,6 @@ const SellerForm = () => {
   const [store, setStore] = useState("");
   const [storeDesc, setStoreDesc] = useState("");
   const [address, setAddress] = useState("");
-  const { user } = useKindeBrowserClient();
   const [number, setNumber] = useState("");
 
   const handleSubmit = async () => {
@@ -19,14 +17,10 @@ const SellerForm = () => {
 
     setIsLoading(true);
     const toastid = toast.loading("Registering Seller...");
-    const name = user.given_name + " " + user.family_name;
-    const email = user.email;
-    console.log(name, email);
+    
     try {
       const res = await axios
         .post("/api/register/seller", {
-          name,
-          email,
           contactNo: number,
           storeName: store,
           storeDescription: storeDesc,

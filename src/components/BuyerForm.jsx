@@ -1,16 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
-const BuyerForm = () => {
+const BuyerForm = ({user}) => {
+
+      console.log(user)
   const [number, setNumber] = useState("");
-  const { user } = useKindeBrowserClient();
   const router=useRouter()
-
   const [loading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {
@@ -18,12 +18,9 @@ const BuyerForm = () => {
 
     setIsLoading(true);
     const toastid = toast.loading("Registering User...");
-    const name = user.given_name + " " + user.family_name;
-    const email = user.email;
-    console.log(name, email);
     try {
       const res = await axios
-        .post("/api/register/buyer", { name, email, contactNo: number })
+        .post("/api/register/buyer", {contactNo: number })
         .then((res) => {
           console.log(res);
           if (res.data.success) {
@@ -44,6 +41,8 @@ const BuyerForm = () => {
       setIsLoading(false);
     }
   };
+
+   
   return (
     <div className="w-full mx-auto p-4  h-screen flex flex-col justify-center sm:w-2/3 md:w-3/6 lg:w-2/6">
       <h2 className=" font-bold text-2xl">Register your account!</h2>

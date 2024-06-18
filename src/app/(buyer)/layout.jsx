@@ -3,13 +3,14 @@ import React from "react";
 
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
 
 import Navbar from "../../components/Navbar";
 import FooterPage from "../../components/FooterPage";
+import { useSession } from "next-auth/react";
 
 const layout = ({ children }) => {
+
   useEffect(() => {
     const lenis = new Lenis();
 
@@ -19,11 +20,11 @@ const layout = ({ children }) => {
       requestAnimationFrame(raf);
     }
 
+    
+
     requestAnimationFrame(raf);
   }, []);
 
-  const { getUser } = useKindeBrowserClient();
-  const user = getUser();
 
   return (
     <>

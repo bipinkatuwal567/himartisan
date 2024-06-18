@@ -1,13 +1,9 @@
 "use client"
 
 import React, { useEffect, useState } from "react";
-import AvatarComponent from "../../components/AvatarComponent";
-import SellerFooter from "../../components/SellerFooter";
 import axios from "axios";
 import {useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs";
 import TopNavbarSeller from "../../components/TopNavbarSeller";
-import toast from "react-hot-toast";
-import { Router } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 
@@ -77,7 +73,7 @@ const Page =  () => {
             </div>
             <div className="p-4 text-right">
               <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                Today's Money
+                Today&apos;s Money
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
                 {`Rs. ${data.sales}`}
@@ -108,7 +104,7 @@ const Page =  () => {
             </div>
             <div className="p-4 text-right">
               <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                Today's Users
+                Today&apos;s Users
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
                 {data.buyers}
