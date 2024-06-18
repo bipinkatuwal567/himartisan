@@ -9,11 +9,6 @@ import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 const layout = ({ children }) => {
 
   useEffect(() => {
-
-      async function getUser(){
-            const email=user.email;
-
-      }
     const lenis = new Lenis();
 
     lenis.on("scroll", (e) => {});
@@ -31,6 +26,7 @@ const layout = ({ children }) => {
       {/* {children} */}
       {/* <!-- component --> */}
       <div className="min-h-screen bg-gray-50/50 grainy">
+      
         <SellerNavbar />
         {children}
       </div>

@@ -4,18 +4,17 @@ import AvatarComponent from "../../../components/AvatarComponent";
 import { Button } from "../../../components/ui/button";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 
-const page = () => {
-  const { getUser } = useKindeBrowserClient();
-  const user = getUser();
-
+const Page = () => {
+const {data:session}=useSession();
   const [username, setUsername] = useState("");
-  const authUsername = String(`${user?.given_name} ${user?.family_name}`);
+  const authUsername = session?.user?.name;
 
  async  function handleSubmit() {
     console.log(username);
 
-    await axios.post("/api/updateuser", {name:username, email:user.email}).then((res)=>{
+    await axios.post("/api/updateuser", {name:username, email:session?.user.email}).then((res)=>{
       console.log(res.data)
     })
   }
@@ -31,8 +30,8 @@ const page = () => {
           </div>
 
           <AvatarComponent
-            img={user?.picture}
-            altName={user?.given_name}
+            img={session?.user?.image}
+            altName={session?.user?.name}
             list={["Dashboard", "Profile", "Add Product"]}
           />
         </div>
@@ -42,7 +41,7 @@ const page = () => {
         <div className="w-full flex flex-col gap-2">
           <label htmlFor="">Username</label>
           <input
-            value={username.length > 0 ? username : user ? authUsername : ""}
+            value={username.length > 0 ? username : session?.user ? authUsername : ""}
             onChange={(e) => setUsername(e.target.value)}
             type="text"
             className="border-2 border-gray-200 outline-none p-1 px-2 rounded-md focus:border-gray-300"
@@ -62,4 +61,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -14,10 +14,10 @@ import {
 
 import { Button } from "../components/ui/button";
 import { LuLogOut } from "react-icons/lu";
-import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
+import { signOut } from "next-auth/react";
 const AvatarComponent = ({ altName, img, list, email }) => {
   return (
-    <DropdownMenu className="w-full flex">
+    <DropdownMenu className="w-full flex ">
       <DropdownMenuTrigger className="outline-none border-none">
         <Avatar>
           <AvatarImage src={img} />
@@ -26,7 +26,7 @@ const AvatarComponent = ({ altName, img, list, email }) => {
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[10rem] mr-5 flex flex-col items-center">
+      <DropdownMenuContent className="w-[12rem] mr-5 flex flex-col items-center">
         <DropdownMenuLabel className="text-sm font-normal truncate text-gray-500">
           {email}
         </DropdownMenuLabel>
@@ -34,16 +34,14 @@ const AvatarComponent = ({ altName, img, list, email }) => {
 
         {list &&
           list.length > 0 &&
-          list.map((data) => {
-            return <DropdownMenuItem>{data}</DropdownMenuItem>;
+          list.map((data, i) => {
+            return <DropdownMenuItem key={i}>{data}</DropdownMenuItem>;
           })}
 
         <DropdownMenuItem>
-          <LogoutLink>
-            <Button className="text-white w-full">
+            <Button className="text-white w-full" onClick={()=>signOut()}>
               <LuLogOut className="mr-2" /> Logout
             </Button>
-          </LogoutLink>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

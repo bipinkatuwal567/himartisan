@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/user/page.jsx", "src/app/seller/newSeller/page.jsx"  ],
+, "src/app/user/page.jsx", "src/app/seller/newSeller/page.jsx", "src/lib/AuthOptions.js", "src/context/ToasterContext.jsx", "src/context/AuthContext.jsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,5 +1,5 @@
 "use client";
-import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -117,8 +117,7 @@ const SellerNavbar = () => {
 
         <ul className="mb-4 flex flex-col gap-1 absolute w-[80%] mx-auto bottom-0 left-[10%]">
           <li>
-            <LogoutLink>
-              <button
+              <button onClick={()=>signOut()}
                 className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
                 type="button"
               >
@@ -139,7 +138,6 @@ const SellerNavbar = () => {
                   log out
                 </p>
               </button>
-            </LogoutLink>
           </li>
         </ul>
       </div>

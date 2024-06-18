@@ -6,22 +6,12 @@ import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { storage } from "../../../db/firebase";
 import { ref, uploadBytes } from "firebase/storage";
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "../../../components/ui/select";
-
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
 const Page = () => {
-  const { getUser } = useKindeBrowserClient();
-  const user = getUser();
+  const {data:session}=useSession()
   const router=useRouter()
 
   const [title, setTitle] = useState("");
@@ -77,8 +67,8 @@ const Page = () => {
           </div>
 
           <AvatarComponent
-            img={user?.picture}
-            altName={user?.given_name}
+            img={session.user.image}
+            altName={session.user.name}
             list={["Dashboard", "Profile", "Add Product"]}
           />
         </div>

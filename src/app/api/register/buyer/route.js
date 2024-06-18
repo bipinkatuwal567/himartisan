@@ -1,13 +1,21 @@
 const { NextURL } = require("next/dist/server/web/next-url")
+import { getServerSession } from "next-auth";
 import prisma from "../../../../db/dbconfig";
 import { NextResponse } from "next/server";
 
 async function register(request){
+      const session=await getServerSession()
+      console.log(session);
       try {
-            const {name, email,  contactNo}=await request.json();
+            const {contactNo}=await request.json();
             
+            const user=await prisma.user.findFirst({
+                  where:{
+                        email:session.user.email
+                  }
+            })
             const buyer=await prisma.buyer.findFirst({where:{
-                  email
+                  userId:user.id
             }})
             if(buyer){
                   return NextResponse.json(
@@ -17,14 +25,21 @@ async function register(request){
             }
             const newBuyer =await prisma.buyer.create({
                   data:{
-                        name,
-                        email,
-                        contactNo,
-                        role:"Buyer"
+                        userId:user.id,
+                        contactNo
                   }
             })
             console.log(newBuyer)
             if(newBuyer){
+                  await prisma.user.update({
+                        where:{
+                              id:user.id
+                        }, 
+                              data:{
+                                    role:"BUYER"
+                              }
+                        
+                  })
                   return NextResponse.json(
                         { success: true, message: "Buyer Registered Successfully" },
                         { status: 200 }
@@ -36,6 +51,7 @@ async function register(request){
                 );
 
       } catch (error) {
+            console.log(error)
             return NextResponse.json(
                   { success: false, message: error.message },
                   { status: 500 }
