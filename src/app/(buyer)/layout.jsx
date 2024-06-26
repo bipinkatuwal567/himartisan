@@ -9,7 +9,7 @@ import Navbar from "../../components/Navbar";
 import FooterPage from "../../components/FooterPage";
 import { useSession } from "next-auth/react";
 
-const layout = ({ children }) => {
+const Layout = ({ children }) => {
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -35,4 +35,4 @@ const layout = ({ children }) => {
   );
 };
 
-export default layout;
+export default Layout;

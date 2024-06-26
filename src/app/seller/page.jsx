@@ -44,7 +44,7 @@ const Page =  () => {
             }
 
             getSales()
-      },[email])
+      },[email, data])
 
 
   return (

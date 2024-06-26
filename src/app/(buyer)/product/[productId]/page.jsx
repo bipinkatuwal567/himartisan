@@ -3,31 +3,33 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../../../../components/ui/button";
 import axios from "axios";
-import {useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs";
 import toast from "react-hot-toast";
 import { usePathname } from "next/navigation";
-import { cn } from "../../../../lib/utils";
+import { signIn, useSession } from "next-auth/react";
+import { Link } from "lucide-react";
 const Page = () => {
       const pathname=usePathname();
       const id=pathname.split('/')[2]
 
       const [product, setProduct]=useState(null);
+      const [seller, setSeller]=useState(null)
       const [isLoading, setIsLoading]=useState(false)
-      const [url, setUrl]=useState("");
-      const {user}=useKindeBrowserClient()
-
-      const email=user?.email || "";
-
-
+      const [url, setUrl]=useState("");   
+      const {data:session}=useSession()
+      
 
       const handleSubmit=async()=>{
             setIsLoading(true)
+            
             try {
 
-                  await axios.post('/api/addtocart', {productId: id,email })
+                  await axios.post('/api/addtocart', {productId: id })
                   .then(res=>{
                         if(res.data.success)
                               toast.success("Added to Cart")
+                        else{
+                              toast.error(res.data.message)
+                        }
                   })
 
             } catch (error) {
@@ -43,9 +45,10 @@ const Page = () => {
                   .then((res)=>{
                         if(res.data.success){
                               setProduct(res.data.product)
-                  const image=`Images%2F${res.data.product?.ImagePath?.split("/")[1]}`
-                  const temp=`https://firebasestorage.googleapis.com/v0/b/first-hackathon-ecommerce.appspot.com/o/${image}?alt=media&token=6277845b-c2ca-43fb-931a-be27634e4069`
-                  setUrl(temp);
+                              setSeller(res.data.seller)
+                              const image=`Images%2F${res.data.product?.ImagePath?.split("/")[1]}`
+                              const temp=`https://firebasestorage.googleapis.com/v0/b/first-hackathon-ecommerce.appspot.com/o/${image}?alt=media&token=6277845b-c2ca-43fb-931a-be27634e4069`
+                              setUrl(temp);
                         }
                   })
             }
@@ -66,8 +69,8 @@ const Page = () => {
     
   </div>
 
-  <div className="mt-10 flex flex-col gap-y-3 lg:w-1/2">
-    <div className="flex flex-col gap-y-2">
+  <div className="mt-10 flex flex-col gap-y-2 lg:w-1/2">
+    <div className="flex flex-col gap-y-1">
       <h2 className="font-bold text-2xl">{product.name || "Test"}</h2>
       <p className="text-sm">
         {product.category || ""} &nbsp; | &nbsp;{" "}
@@ -79,21 +82,37 @@ const Page = () => {
       <p>{`Rs. ${product.price}`}</p>
     </div>
 
-    <div className="flex  flex-col gap-2 mt-10">
+    <div className="flex  flex-col gap-2 mt-8">
       <h2 className="font-semibold text-lg">Description</h2>
       <p className="text-gray-600">
-       {product.description}
+       {product.description} 
       </p>
     </div>
 
-   <Button
-  disabled={isLoading || product.stock <= 0}
-  
-  type="button"
-  onClick={handleSubmit}
+
+    <div className="flex  flex-col gap-2 mt-8">
+      <h2 className="font-semibold text-lg">Sold By</h2>
+      <p className="text-gray-600">
+       {seller?.storeName || ""} |  <span className="hover:text-orange-500"> <a href={`/shop/${seller.id}`}>Visit Store</a></span>
+      </p>
+     
+    </div>
+
+
+  {session?.user ? (
+ <Button
+ disabled={isLoading || product.stock <= 0}
+ 
+ type="button"
+ onClick={handleSubmit}
 >
-  {isLoading ? 'Adding...' : 'Add to Cart'}
+ {isLoading ? 'Adding...' : 'Add to Cart'}
 </Button>
+  ):(
+<Button type="button" onClick={()=>signIn("google")}>
+      Sign In to Add
+</Button>
+  )}
   </div>
 </div>
 ):(

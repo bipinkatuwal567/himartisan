@@ -4,34 +4,35 @@ import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { FaTrash } from "react-icons/fa";
 import axios from "axios";
-import { LoginLink, useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import toast from "react-hot-toast";
 import CryptoJS from 'crypto-js';
+import { signIn, useSession } from "next-auth/react";
 
 const AddToCart = () => {
+
+      const {data:session}=useSession()
+      
   const [qty, setQty] = useState(1);
   const [cart, setCart] = useState([]);
   const [grandTotal, setGrandTotal] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-  const { user } = useKindeBrowserClient();
-  const email = user?.email || "";
-
+  const [isLoading, setIsLoading] = useState(false);
+      console.log(cart)
+console.log(cart)
   useEffect(() => {
     async function getMyCart() {
       try {
-        const response = await axios.get('/api/getmycart', { params: { email } });
+        const response = await axios.get('/api/getmycart');
         if (response.data.success) {
           setCart(response.data.products);
         }
       } catch (error) {
         console.error('Error fetching cart:', error);
       } finally {
-        setIsLoading(false);
       }
     }
 
     getMyCart();
-  }, [email]);
+  }, []);
 
   // Calculate grandTotal whenever cart or qty changes
   useEffect(() => {
@@ -46,7 +47,7 @@ const AddToCart = () => {
 
   async function handleDelete(id) {
     try {
-      await axios.post('/api/deletecart', { email, productId: id });
+      await axios.post('/api/deletecart', {  productId: id });
       toast.success("Item Deleted from Cart");
       const updatedCart = cart.filter(item => item.id !== id);
       setCart(updatedCart);
@@ -57,19 +58,18 @@ const AddToCart = () => {
   }
 
   async function handleCheckout() {
+      let toastId=toast.loading("Please Wait")
     setIsLoading(true);
-
-    // Check if the user is logged in
-    if (!email) {
-      LoginLink();
-      return;
-    }
-   try {
-      await axios.post('/api/placeorder',{email, cart}).then((res)=>{
-          });
-      
-   } catch (error) {
-   }
+      try {
+            console.log(cart)
+            await axios.post('/api/placeorder',{email:session?.user?.email, cart}).then((res)=>{
+                  console.log(res.data)
+                  toast.loading("Redirecting to Esewa Payment", {id:toastId})
+            });
+            
+      } catch (error) {
+            console.log(error.message)
+      }
     // Generate a unique transaction UUID
     const uuid = new Date().getTime().toString().slice(-6);
 
@@ -112,6 +112,7 @@ const AddToCart = () => {
    
 
     setIsLoading(false);
+    toast.success("Great!", {id:toastId})
   }
 
   function createSignature(message) {
@@ -140,6 +141,7 @@ const AddToCart = () => {
                   price={item.price}
                   qty={item.qty}
                   ImagePath={item.ImagePath}
+                  stock={item.stock}
                   setQty={(newQty) => {
                     // Update quantity of the specific item in cart
                     const updatedCart = cart.map((cartItem) =>
@@ -152,13 +154,13 @@ const AddToCart = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="4">No Products to Show</td>
+                <td colSpan="4" >{isLoading ? "Getting you Cart!":"No Products in Your cart"}</td>
               </tr>
             )}
           </tbody>
         </table>
-        {!isLoading && cart && cart.length === 0 && <div>No Products to Show</div>}
-        {isLoading && <tr><div>Fetching Product</div></tr>}
+        {/* {!isLoading && cart && cart.length === 0 && <div>No Products to Show</div>}
+        {isLoading && <tr><div>Fetching Product</div></tr>} */}
 
         <div className="flex flex-col w-2/3 md:w-2/4 border-t border-t-gray-300 pt-5 lg:pt-0 lg:w-1/3 gap-6 border-l pl-4 lg:border-0">
           <p className="font-bold">Summary</p>
@@ -172,20 +174,21 @@ const AddToCart = () => {
             <p className="font-bold">Rs. {grandTotal.toFixed(2)}</p>
           </div>
 
-          {email ? <Button onClick={handleCheckout}>{isLoading? "Checking Out":"Checkout"}</Button> : <Button onClick={LoginLink}>Login to checkout</Button>}
+          {session?.user ? <Button onClick={handleCheckout} disabled={cart?.length===0 || cart===undefined || !session?.user}>{isLoading? "Checking Out":"Checkout"}</Button> : <Button onClick={()=>signIn("google")}>Login to checkout</Button>}
         </div>
       </div>
     </div>
   );
 };
 
-function CartCard({ id, name, price, qty, setQty, handleDelete , ImagePath}) {
+function CartCard({ id, name, price, qty, setQty, handleDelete , ImagePath, stock}) {
 
 
       const image=`Images%2F${ImagePath?.split("/")[1]}`
                   const url=`https://firebasestorage.googleapis.com/v0/b/first-hackathon-ecommerce.appspot.com/o/${image}?alt=media&token=6277845b-c2ca-43fb-931a-be27634e4069`
   const handleQtyChange = (newQty) => {
-    if (newQty >= 1) {
+    if (newQty >= 1 && newQty<=stock) {
+      
       setQty(newQty);
     }
   };
@@ -216,6 +219,7 @@ function CartCard({ id, name, price, qty, setQty, handleDelete , ImagePath}) {
         </Button>
         <p>{qty}</p>
         <Button
+            disabled={qty===stock}
           variant="ghost"
           size="sm"
           onClick={() => handleQtyChange(qty + 1)}

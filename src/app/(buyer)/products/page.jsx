@@ -43,7 +43,7 @@ export default function ProductPage() {
     }, [search]); // Dependency on 'search' state
 
   return (
-    <div className="mt-8 w-full flex flex-col mx-auto">
+    <div className="mt-8 w-full flex flex-col mx-auto min-h-[calc(100vh-18rem)]">
       <h2 className=" justify-self-start mb-5 font-bold text-lg sm:text-xl">
         {(search === "") | (search === null)
           ? "Products"

@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import AvatarComponent from "../../../components/AvatarComponent";
 import { Button } from "../../../components/ui/button";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { storage } from "../../../db/firebase";
 import { ref, uploadBytes } from "firebase/storage";
 
@@ -21,13 +20,16 @@ const Page = () => {
   const [description, setDescription] = useState("");
   const inputRef = React.useRef(null);
   const selectRef=React.useRef(null)
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-      console.log(selectedCategory)
+      let toastId=undefined
+
   async function hanldeSubmit() {
-    setIsLoading(true);
-    const toastId=toast.loading("Adding Product...")
-    try {
+      if(selectedCategory===null || selectedCategory==="" )
+      return;
+      try {
+       toastId=toast.loading("Adding Product...")
+      setIsLoading(true);
       console.log(selectRef)
       const file = inputRef.current.files[0];
       const ImagePath = `Images/${Math.floor(new Date().getTime() / 1000)}.${
@@ -46,11 +48,19 @@ const Page = () => {
           category: selectedCategory,
         })
         .then((res) => {
-            if(res.data.success)
+            if(res.data.success){
                   toast.success("Added Successfully", {id:toastId})
+                  setTitle("")
+                  setPrice("")
+                  setDescription("")
+                  setStock("")
+
+            }
+                 
         });
       // router.push('/seller')
     } catch (error) {
+      toast.error("Failed to Add Product",{id:toastId})
     } finally {
       setIsLoading(false);
     }
@@ -67,8 +77,8 @@ const Page = () => {
           </div>
 
           <AvatarComponent
-            img={session.user.image}
-            altName={session.user.name}
+            img={session?.user?.image}
+            altName={session?.user?.name}
             list={["Dashboard", "Profile", "Add Product"]}
           />
         </div>
@@ -85,7 +95,7 @@ const Page = () => {
             onChange={(e) => setTitle(e.target.value)}
             type="text"
             className="border-2 border-gray-200 outline-none p-1 px-2 rounded-md focus:border-gray-300"
-            // disabled={loading}
+            required
           />
         </div>
 
@@ -99,7 +109,7 @@ const Page = () => {
             onChange={(e) => setPrice(e.target.value)}
             type="text"
             className="border-2 border-gray-200 outline-none p-1 px-2 rounded-md focus:border-gray-300"
-            // disabled={loading}
+            required
           />
         </div>
 
@@ -113,7 +123,7 @@ const Page = () => {
             onChange={(e) => setStock(e.target.value)}
             type="text"
             className="border-2 border-gray-200 outline-none p-1 px-2 rounded-md focus:border-gray-300"
-            // disabled={loading}
+            required
           />
         </div>
 
@@ -127,7 +137,7 @@ const Page = () => {
             ref={inputRef}
             type="file"
             className="border-2 border-gray-200 outline-none p-1 px-2 rounded-md focus:border-gray-300"
-            // disabled={loading}
+            required
           />
         </div>
 
@@ -136,11 +146,13 @@ const Page = () => {
             Product Category<span className="text-red-500">*</span>
           </label>
           <select
+          
         className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
         value={selectedCategory}
         onChange={(e)=>setSelectedCategory(e.target.value)}
+        required
       >
-        <option value="">Select a Category</option>
+        <option hidden disabled selected value="">Select a Category</option>
         <option value="Furniture">Furniture</option>
         <option value="Home Decor and Items">Home Decor and Items</option>
         <option value="Weapons">Weapons</option>
