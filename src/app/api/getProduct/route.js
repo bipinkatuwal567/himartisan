@@ -12,12 +12,21 @@ export async function getProduct(request){
                         id
                   }
             })
+            console.log(product)
             if(product){
+                  const seller=await prisma.seller.findFirst({
+                        where:{
+                              userId:product.sellerId
+                        }
+                  })
+                  console.log(seller)
                   return NextResponse.json(
-                        { success: true, message: " Got A Product", product},
+                        { success: true, message: " Got A Product", product, seller},
                         { status: 200 }
                       );
             }
+
+            
 
             return NextResponse.json(
                   { success: false, message: " NO products"},
