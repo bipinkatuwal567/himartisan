@@ -1,12 +1,15 @@
+import { getServerSession } from "next-auth";
 import prisma from "../../../db/dbconfig";
 import { NextResponse } from "next/server";
 async function deleteCart(request){
-      const {productId, email}=await request.json();
+      const session=await getServerSession()
+
+      const {productId}=await request.json();
       try {
 
-            const user=await prisma.buyer.findFirst({
+            const user=await prisma.user.findFirst({
                   where:{
-                        email
+                        email:session?.user?.email
                   }
             })
             const deletedProduct = await prisma.cart.deleteMany({

@@ -1,14 +1,13 @@
+import { getServerSession } from "next-auth";
 import prisma from "../../../db/dbconfig"
 import { NextResponse } from "next/server";
 
 async function getmycart(request){
-      
+      const session=await getServerSession();
       try {
-            const params=request.nextUrl.searchParams
-            const email=params.get('email')
-            console.log(email)
-            const user=await prisma.buyer.findFirst({
-                  where:{email}
+           
+            const user=await prisma.user.findFirst({
+                  where:{email:session.user.email}
             })
 
             const orders= await prisma.cart.findMany({
@@ -16,6 +15,7 @@ async function getmycart(request){
                         userId:user.id
                   }
             })
+            console.log(orders)
             const productsIds=orders.map(order=>order.productId)
             if(productsIds.length==0){
                   return NextResponse.json(
@@ -36,7 +36,8 @@ async function getmycart(request){
                   if (order) {
                     return {
                       ...product,
-                      qty: order.qty
+                      qty: order.qty,
+                      stock:product.stock
                     };
                   } else {
                     return product;
