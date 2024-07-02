@@ -16,7 +16,6 @@ const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
 const {data:session}=useSession()
-console.log(session)
 
 useEffect(()=>{
       if(session?.user.role===null){
