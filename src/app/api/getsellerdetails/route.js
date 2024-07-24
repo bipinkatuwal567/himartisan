@@ -10,6 +10,19 @@ async function isSeller(request) {
       },
     });
 
+    const user=await prisma.User.findFirst({
+      where: {
+            id:seller.userId
+      }
+    })
+
+    const finalSeller={
+      ...seller,
+      image:user.image,
+      createdAt:user.createdAt
+    }
+   
+
     const products = await prisma.product.findMany({
       where: {
         sellerId: seller.userId,
@@ -19,7 +32,7 @@ async function isSeller(request) {
 
     if (seller) {
       return NextResponse.json(
-        { success: true, seller, products },
+        { success: true, seller:finalSeller, products },
         { status: 200 }
       );
     }
