@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 import prisma from "../../../db/dbconfig"
 import { NextResponse } from "next/server";
 
-async function getmycart(request){
+async function getmycart(){
       const session=await getServerSession();
       try {
            
@@ -14,7 +14,7 @@ async function getmycart(request){
                   where: {
                         AND: [
                           { userId: user.id },
-                          { status: "" }
+                          { status: "PURCHASED" }
                         ],
                       },
             })
@@ -40,7 +40,9 @@ async function getmycart(request){
                     return {
                       ...product,
                       qty: order.qty,
-                      stock:product.stock
+                      stock:product.stock,
+                      purchasedOn:order.purchasedOn,
+                      deliveredOn:order.deliveredOn
                     };
                   } else {
                     return product;

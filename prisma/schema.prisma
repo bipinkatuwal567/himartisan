@@ -113,6 +113,9 @@ model Cart{
       qty Int?
       product Product @relation(fields: [productId], references: [id], onDelete: Restrict)
       productId String @db.ObjectId
+      status String? @default("")
+      purchasedOn DateTime?
+      deliveredOn DateTime?
 
 }
 
@@ -127,7 +130,7 @@ model sales{
 }
 
 model Order{
-      is String @id @default(auto()) @map("_id") @db.ObjectId
+      id String @id @default(auto()) @map("_id") @db.ObjectId
       pricePaid Int
       createdAt DateTime @default(now())
       user Buyer @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -135,6 +138,16 @@ model Order{
       qty Int?
       product Product @relation(fields: [productId], references: [id], onDelete: Restrict)
       productId String @db.ObjectId
+}
+
+model review{
+      id String @id @default(auto()) @map("_id") @db.ObjectId
+      rating Int?
+      review String?
+      userId String @db.ObjectId
+      productId String @db.ObjectId
+      createdAt DateTime @default(now())
+      
 }
 
 

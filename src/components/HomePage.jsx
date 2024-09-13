@@ -50,9 +50,9 @@ const HomePage = () => {
           Handcrafted khukuri
         </h2>
         <h2 className="font-semibold text-xl sm:text-2xl lg:text-3xl shrink ">
-          Nepal's Legendary Curved Knife, Artisanal Masterpiece .
+          Nepal&apos;s Legendary Curved Knife, Artisanal Masterpiece .
         </h2>
-        <Link href="/product/666e38c396774d226e1f2720">
+        <Link href="/product/66e28273da8f0e793e62c683">
         <Button className="self-start lg:mt-3" >Shop now</Button>
         </Link>
       </div>

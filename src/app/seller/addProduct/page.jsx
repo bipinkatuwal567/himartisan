@@ -2,7 +2,12 @@
 import React, { useState } from "react";
 import AvatarComponent from "../../../components/AvatarComponent";
 import { Button } from "../../../components/ui/button";
-import { storage } from "../../../db/firebase";
+// import { storage } from "../../../db/firebase";
+
+import dynamic from 'next/dynamic';
+
+const storage = dynamic(() => import('../../../db/firebase'), { ssr: false });
+
 import { ref, uploadBytes } from "firebase/storage";
 
 import axios from "axios";

@@ -41,28 +41,30 @@ function SellerPage() {
       <div className="w-full mt-3 flex gap-4 items-center bg-gray-200/75 rounded p-4">
         <div>
           <img
-            src={data?.user?.image}
+            src={seller?.image}
             alt="store image"
             className="w-full rounded-full"
           />
         </div>
 
         <div>
-          <h2 className="font-semibold text-lg">{seller?.storeName}</h2>
+          <h2 className="font-semibold text-2xl uppercase">{seller?.storeName}</h2>
           <h2 className="text-gray-500">{seller?.storeAddress}</h2>
         </div>
       </div>
 
-      <div className="mt-5">
-        <h2 className="border-b border-black">Description</h2>
+      <div className="mt-3 ">
+        <h2 className="border-b border-black text-xl m-0 font-semibold ">Description</h2>
         <p className="mt-3">{seller?.storeDescription}</p>
       </div>
 
       {/* list the products using map function  */}
-      <div>
-        {products.map((item) => {
+      <h1 className="text-2xl font-semibold">Products</h1>
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-5 sm:justify-between justify-center sm:gap-y-8">
+        {products && products.map((item) => {
           return (
             <ProductCard
+              key={item.id}
               id={item.id}
               name={item.name}
               description={item.description}

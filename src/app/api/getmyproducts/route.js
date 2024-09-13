@@ -1,25 +1,35 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 import prisma from '../../../db/dbconfig';
-export async function getProducts(request){
-    try {
-      const {email}=await request.json();
-      const products=await prisma.product.findMany({
-            where:{
-                  email
-            }
-      });
-         
 
-      console.log(products)
-      if(products)
-            return NextResponse.json({success: true, message:"Product Got Successfully", products}, {status:200})
-      return NextResponse.json({success: false, message:"Failed to Get Products"}, {status:400})
+export async function POST(request) {
+  try {
+    const { email } = await request.json();
+    
+    const products = await prisma.product.findMany({
+      where: {
+        email: email, // Adjust based on your actual schema
+      },
+    });
 
-
-    } catch (error) {
-      return NextResponse.json({success: false, message:error.message}, {status:500})
-      
+    console.log(products);
+    
+    if (products.length > 0) {
+      return NextResponse.json(
+        { success: true, message: "Products retrieved successfully", products },
+        { status: 200 }
+      );
+    } else {
+      return NextResponse.json(
+        { success: false, message: "No products found" },
+        { status: 404 }
+      );
     }
-}
 
-export { getProducts as POST};
+  } catch (error) {
+    console.error(error.message);
+    return NextResponse.json(
+      { success: false, message: error.message },
+      { status: 500 }
+    );
+  }
+}

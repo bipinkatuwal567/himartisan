@@ -1,12 +1,32 @@
-"use client";
+"use client"; // Ensures this component is treated as a client component
+import SuspenseBoundary from '../../components/SuspenseBoundary'; // Adjust path as needed
+import { useSearchParams } from 'next/navigation';
+import { Button } from '../../components/ui/button';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-import { useSearchParams } from "next/navigation";
-import { Button } from "../../components/ui/button";
-import Link from "next/link";
-
-const page = () => {
+const PageContent = () => {
+  const [uuid, setUuid] = useState(null);
   const params = useSearchParams();
-  const uuid = params.get("uuid");
+
+  useEffect(() => {
+    const uuidParam = params.get("uuid");
+    if (uuidParam) {
+      setUuid(uuidParam);
+    }
+
+    async function clearCart() {
+      try {
+        const res = await axios.post('/api/clearcart');
+        console.log(res.data);
+      } catch (error) {
+        console.error("Error clearing cart:", error);
+      }
+    }
+
+    clearCart();
+  }, [params]);
 
   return (
     <div className="flex w-full flex-col h-screen justify-center items-center">
@@ -22,4 +42,10 @@ const page = () => {
   );
 };
 
-export default page;
+const Page = () => (
+  <SuspenseBoundary>
+    <PageContent />
+  </SuspenseBoundary>
+);
+
+export default Page;

@@ -122,10 +122,10 @@ console.log(cart)
   }
 
   return (
-    <div className="mt-5 flex flex-col w-full lg:h-[calc(100vh-18rem)] h-screen">
-      <h2 className="text-2xl font-bold border-b border-gray-300 pb-2">Cart</h2>
-      <div className="mt-8 flex w-full lg:justify-between items-start lg:items-start gap-10 flex-col lg:flex-row">
-        <table className="flex justify-between">
+    <div className="mt-5 flex flex-col w-full max-w-[1200px] mb-[10vh] h-auto">
+      <h2 className="text-3xl font-semibold border-b border-gray-300 pb-2">Cart</h2>
+      <div className="mt-8  flex w-full justify-between  items-start lg:items-start gap-10 flex-col p-0 md:flex-row">
+        <table className="flex justify-between w-full md:w-1/2">
           <tbody>
             <tr className="grid grid-cols-4 sm:grid-cols-3 gap-10 place-items-start text-gray-600">
               <th className="col-span-2 font-normal sm:col-span-1">Products</th>
@@ -162,7 +162,7 @@ console.log(cart)
         {/* {!isLoading && cart && cart.length === 0 && <div>No Products to Show</div>}
         {isLoading && <tr><div>Fetching Product</div></tr>} */}
 
-        <div className="flex flex-col w-2/3 md:w-2/4 border-t border-t-gray-300 pt-5 lg:pt-0 lg:w-1/3 gap-6 border-l pl-4 lg:border-0">
+        <div className="flex flex-col w-full sm:w-full md:w-2/5 lg:2/4 border-t border-t-gray-300 pt-5 lg:pt-0 lg:w-1/3 gap-6 md:border-l md:pl-4 lg:border-0 border p-4">
           <p className="font-bold">Summary</p>
           <div className="flex gap-2 justify-between">
             <p className="text-gray-600">Delivery Charge</p>

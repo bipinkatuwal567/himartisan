@@ -58,7 +58,7 @@ useEffect(()=>{
             }`}
             href={"/products?category=All"}
           >
-            Product
+            Products
           </Link>
           <Link
             className={`hover:bg-gray-200/70 px-3 py-2 rounded-md ${
@@ -104,7 +104,7 @@ useEffect(()=>{
             }`}
             onClick={() => setOpenMenu(false)}
           >
-            Product
+            Products
           </Link>
           <Link
             href={"/cart"}
