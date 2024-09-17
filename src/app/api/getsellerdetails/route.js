@@ -9,6 +9,13 @@ async function isSeller(request) {
         id,
       },
     });
+    const user=await prisma.user.findFirst({
+      where:{
+            id:seller.userId
+      }
+    })
+    console.log(user)
+    const updatedSeller={...seller, image:user.image}
 
     const user=await prisma.User.findFirst({
       where: {
@@ -28,8 +35,6 @@ async function isSeller(request) {
         sellerId: seller.userId,
       },
     });
-    console.log(products);
-
     if (seller) {
       return NextResponse.json(
         { success: true, seller:finalSeller, products },

@@ -15,6 +15,7 @@ import {
 import { Button } from "../components/ui/button";
 import { LuLogOut } from "react-icons/lu";
 import { signOut } from "next-auth/react";
+import Link from "next/link";
 const AvatarComponent = ({ altName, img, list, email }) => {
   return (
     <DropdownMenu className="w-full flex ">
@@ -35,7 +36,7 @@ const AvatarComponent = ({ altName, img, list, email }) => {
         {list &&
           list.length > 0 &&
           list.map((data, i) => {
-            return <DropdownMenuItem key={i}>{data}</DropdownMenuItem>;
+            return <DropdownMenuItem key={i}><Link href={`seller/${data}`}>{data}</Link></DropdownMenuItem>;
           })}
 
         <DropdownMenuItem>

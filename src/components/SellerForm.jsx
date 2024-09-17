@@ -53,7 +53,7 @@ const SellerForm = () => {
       <form className="bg-white p-4 rounded-lg mt-5 flex flex-col gap-y-5">
         <div className="w-full flex flex-col gap-2">
           <label className="font-semibold" htmlFor="">
-            Store's Name
+            Store&apos;s Name
           </label>
           <input
             value={store}

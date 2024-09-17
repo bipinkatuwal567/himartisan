@@ -1,20 +1,28 @@
 import { NextResponse } from "next/server";
 import prisma from '../../../db/dbconfig';
-export async function getProducts(){
+
+export async function GET() {
     try {
-      const products=await prisma.product.findMany();
-         
+        const products = await prisma.product.findMany();
+        
+        console.log("Fetched Products:", products);
 
-      console.log(products)
-      if(products)
-            return NextResponse.json({success: true, message:"Product Got Successfully", products}, {status:200})
-      return NextResponse.json({success: false, message:"Failed to Get Products"}, {status:400})
-
-
+        if (products.length > 0) {
+            return NextResponse.json(
+                { success: true, message: "Products fetched successfully", products },
+                { status: 200 }
+            );
+        } else {
+            return NextResponse.json(
+                { success: false, message: "No products found" },
+                { status: 404 } // Changed to 404 for "Not Found"
+            );
+        }
     } catch (error) {
-      return NextResponse.json({success: false, message:error.message}, {status:500})
-      
+        console.error("Error fetching products:", error);
+        return NextResponse.json(
+            { success: false, message: error.message },
+            { status: 500 }
+        );
     }
 }
-
-export { getProducts as GET};
