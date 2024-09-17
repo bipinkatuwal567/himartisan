@@ -27,7 +27,7 @@ const AvatarComponent = ({ altName, img, list, email }) => {
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[12rem] mr-5 flex flex-col items-center">
+      <DropdownMenuContent className="w-auto px-1 py-2 mr-5 flex flex-col items-center">
         <DropdownMenuLabel className="text-sm font-normal truncate text-gray-500">
           {email}
         </DropdownMenuLabel>
